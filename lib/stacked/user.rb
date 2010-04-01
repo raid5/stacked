@@ -18,9 +18,11 @@ module Stacked
                   :view_count,
                   :website_url
 
-    alias_method :type, :user_type
+    alias_method :gravatar, :email_hash
     alias_method :id, :user_id
     alias_method :name, :display_name
+    alias_method :type, :user_type
+
     
     class << self
       alias_method :reputation, :all
@@ -35,6 +37,11 @@ module Stacked
       
       def name(options = {})
         parse(request(path + "name", options))
+      end
+      
+      def filter(filter, options={})
+        options.reverse_merge!(:filter => filter)
+        parse(request(path, options))
       end
     end
   end

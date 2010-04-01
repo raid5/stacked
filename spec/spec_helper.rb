@@ -5,6 +5,10 @@ require 'spec'
 require 'spec/autorun'
 require 'fakeweb'
 
+Dir["spec/support/**/*.rb"].each { |f| require f }
+
+# Uncomment only for debugging as we only ever want to test against the real API.
+# At least, until it becomes stable.
 # FakeWeb.allow_net_connect = false
 
 Spec::Runner.configure do |config|
