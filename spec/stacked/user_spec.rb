@@ -14,7 +14,11 @@ describe Stacked::User do
   end
 
   it "gathers the newest user" do
-    within_the_last_day = Time.at(Stacked::User.newest(:pagesize => 1).first["creation_date"]) > Time.now - 1.day
+    within_the_last_day = Time.at(Stacked::User.newest(:pagesize => 1).first.creation_date) > Time.now - 1.day
     within_the_last_day.should be_true
+  end
+  
+  it "gathers the oldest user" do
+    Stacked::User.oldest(:pagesize => 1).first.name.should eql("Community")
   end
 end

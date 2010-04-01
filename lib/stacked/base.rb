@@ -7,9 +7,7 @@ module Stacked
     class << self
       def all(options = {})
         records = request(path, options)
-        records.map do |record|
-          self.new(record)
-        end
+        parse(records)
       end
       
       def request(p=path, options={})
@@ -17,6 +15,10 @@ module Stacked
       end
       
       private
+      
+      def parse(records)
+        records.map { |record| self.new(record) }
+      end
       
       def base
         Pathname.new("http://api.stackoverflow.com/0.5/")
