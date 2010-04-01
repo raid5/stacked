@@ -5,8 +5,8 @@ module Stacked
   class Base
     include HTTParty
     class << self
-      def all
-        records = get(path, :query => { :key => key })[resource]
+      def all(options = {})
+        records = get(path, :query => { :key => key }.merge!(options))[resource]
         records.map do |record|
           self.new(record)
         end
