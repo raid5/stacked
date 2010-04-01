@@ -8,4 +8,8 @@ describe "Stacked" do
   it "paginates through the users" do
     Stacked::User.all.first.should_not eql(Stacked::User.all(:page => 2).first)
   end
+  
+  it "limits the results to just one" do
+    Stacked::User.all(:pagesize => 1).size.should eql(1)
+  end
 end
