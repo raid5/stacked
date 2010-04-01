@@ -1,0 +1,1 @@
+gem 'httparty', '0.4.5'
