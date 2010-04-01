@@ -22,7 +22,11 @@ module Stacked
     alias_method :id, :user_id
     
     class << self
+      alias_method :reputation, :all
       
+      def newest(options = {})
+        request(path + "newest", options)
+      end
     end
   end
 end
