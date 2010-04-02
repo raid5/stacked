@@ -33,6 +33,11 @@ module Stacked
                :week
     
     alias_method :created_at, :creation_date
+    alias_method :id, :question_id
+    
+    def user
+      User.find(owner_user_id)
+    end
 
     class << self
       
