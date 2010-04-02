@@ -23,6 +23,7 @@ for file in files - ignored_files
     File.open(file, "w+") { |f| f.write(lines.join) }
   end
 end
-
+p "Committing in 3 seconds... stop if you don't want this."
+sleep(3)
 `git add .`
 `git commit -m "Ran cleaner."`

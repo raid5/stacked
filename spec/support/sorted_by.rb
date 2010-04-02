@@ -10,8 +10,6 @@ module Spec
 
       def matches?(receiver)
         if @direction.to_sym == :desc
-          p receiver[0].send(@field)
-          p receiver[1].send(@field)
           receiver[0].send(@field) > receiver[1].send(@field)
         elsif @direction.to_sym == :asc
           receiver[0].send(@field) < receiver[1].send(@field)

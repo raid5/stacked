@@ -69,5 +69,10 @@ describe Stacked::User do
       questions = subject.questions_by_views(:pagesize => 2)
       questions.should be_sorted_by(:views)
     end
+    
+    it "finds the user's newest questions" do
+      questions = subject.newest_questions(:pagesize => 2)
+      questions.should be_sorted_by(:creation_date, :desc)
+    end
   end
 end

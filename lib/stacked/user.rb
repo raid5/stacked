@@ -40,14 +40,20 @@ module Stacked
     def favorites(options={})
       parse_questions(request(singular(id) + "favorites", options))
     end
+    
+    def newest_questions(options={})
+      parse_questions(request(singular(id) + "questions/newest", options))
+    end
+      
+    def questions(options={})
+      parse_questions(request(singular(id) + "questions", options))
+    end
 
     def recent_questions(options={})
       parse_questions(request(singular(id) + "questions/recent", options))
     end
 
-    def questions(options={})
-      parse_questions(request(singular(id) + "questions", options))
-    end
+
 
     alias_method :favourites, :favorites # Silly Americans.
 
