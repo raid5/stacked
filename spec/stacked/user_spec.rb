@@ -43,23 +43,23 @@ describe Stacked::User do
       subject.favourites.should_not be_empty
       subject.favourites.first.should be_is_a(Stacked::Question)
     end
-    
+
     it "can pass options to favourites" do
       subject.favourites.size.should eql(19)
       subject.favourites(:pagesize => 1).size.should eql(1)
     end
-    
+
     it "finds the user's questions" do
       question = subject.questions.first
       question.should be_is_a(Stacked::Question)
       question.owner_user_id.should eql(subject.id)
     end
-    
+
     it "can pass options to questions" do
       subject.questions.size.should eql(22)
       subject.questions(:pagesize => 1).size.should eql(1)
     end
-    
+
     it "finds the user's recent questions" do
       questions = subject.recent_questions(:pagesize => 2)
       (questions[0].id > questions[1].id).should be_true

@@ -25,7 +25,7 @@ module Stacked
     alias_method :created_at, :creation_date
 
     collection :newest, :oldest, :name
-    
+
     delegate :request, :singular, :parse, :to => "self.class"
 
     class << self
@@ -36,19 +36,19 @@ module Stacked
         records(path, options)
       end
     end
-    
+
     def favorites(options={})
       parse_questions(request(singular(id) + "favorites", options))
     end
-    
+
     def recent_questions(options={})
       parse_questions(request(singular(id) + "questions/recent", options))
     end
-    
+
     def questions(options={})
       parse_questions(request(singular(id) + "questions", options))
     end
-    
+
     alias_method :favourites, :favorites # Silly Americans.
 
     private
