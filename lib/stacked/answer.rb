@@ -14,6 +14,14 @@ module Stacked
                   :title,
                   :up_vote_count,
                   :view_count
+
+    alias_method :created_at, :creation_date
+    alias_method :updated_at, :last_edit_date
+    alias_method :id, :answer_id
+
+    def user
+
+    end
   end
-  
+
 end

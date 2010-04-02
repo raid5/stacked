@@ -26,13 +26,26 @@ module Stacked
 
     collection :newest, :oldest, :name
     
+    delegate :request, :singular, :parse, :to => "self.class"
+
     class << self
       alias_method :reputation, :all
-      
+
       def filter(filter, options={})
         options.reverse_merge!(:filter => filter)
         records(path, options)
       end
     end
+
+    def favorites
+      parse_questions(request(singular(id) + "favorites"))
+    end
+
+    private
+      def parse_questions(result)
+        parse(result["questions"], Stacked::Question)
+      end
+
+    alias_method :favourites, :favorites # Silly Americans.
   end
 end

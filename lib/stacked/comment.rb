@@ -8,7 +8,7 @@ module Stacked
                   :post_id,
                   :post_type,
                   :score
-                  
+
     alias_method :created_at, :creation_date
   end
 end

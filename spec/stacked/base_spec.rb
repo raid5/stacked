@@ -5,7 +5,7 @@ describe Stacked::Base do
     # We cannot use Stacked::Base here obviously because SO does not have Bases!
     # So we use User instead.
     subject { Stacked::User }
-    
+
     it "retrieves a list of a resource" do
       subject.all.all? { |u| u.is_a?(subject) }.should be_true
     end
@@ -19,5 +19,5 @@ describe Stacked::Base do
     end
 
   end
-  
+
 end

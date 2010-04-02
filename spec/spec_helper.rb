@@ -12,5 +12,5 @@ Dir["spec/support/**/*.rb"].each { |f| require f }
 # FakeWeb.allow_net_connect = false
 
 Spec::Runner.configure do |config|
-  
+
 end

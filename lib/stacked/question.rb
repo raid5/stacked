@@ -18,11 +18,11 @@ module Stacked
                   :title,
                   :up_vote_count,
                   :view_count
-    
+
     # TODO: Combine this into a "has_many"-esque method when I'm not jetlagged.
     association :comments
     association :answers
-                  
+
     collection :active,
                :featured,
                :hot,
@@ -31,17 +31,18 @@ module Stacked
                :unanswered,
                :votes,
                :week
-    
+
     alias_method :created_at, :creation_date
     alias_method :id, :question_id
-    
+    alias_method :updated_at, :last_edit_date
+
     def user
       User.find(owner_user_id)
     end
 
     class << self
-      
+
     end
   end
-  
+
 end
