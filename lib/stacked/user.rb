@@ -44,12 +44,12 @@ module Stacked
     def favorites(options={})
       parse_questions(request(singular(id) + "favorites", options))
     end
+    
+    alias_method :favourites, :favorites # Silly Americans.
 
     private
       def parse_questions(result)
         parse(result["questions"], Stacked::Question)
       end
-
-    alias_method :favourites, :favorites # Silly Americans.
   end
 end
