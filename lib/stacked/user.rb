@@ -37,12 +37,12 @@ module Stacked
       end
     end
     
-    def questions
-      parse_questions(request(singular(id) + "questions"))
+    def questions(options={})
+      parse_questions(request(singular(id) + "questions", options))
     end
 
-    def favorites
-      parse_questions(request(singular(id) + "favorites"))
+    def favorites(options={})
+      parse_questions(request(singular(id) + "favorites", options))
     end
 
     private
