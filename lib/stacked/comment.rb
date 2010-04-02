@@ -12,5 +12,6 @@ module Stacked
                   :score
 
     alias_method :created_at, :creation_date
+    alias_method :id, :comment_id
   end
 end
