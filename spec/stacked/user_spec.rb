@@ -61,8 +61,8 @@ describe Stacked::User do
     end
     
     it "finds the user's recent questions" do
-      questions = subject.recent_questions(:pagesize => 1)
-      (questions[0].last_edit_date > questions[1].last_edit_date).should be_true      
+      questions = subject.recent_questions(:pagesize => 2)
+      (questions[0].id > questions[1].id).should be_true
     end
   end
 end
