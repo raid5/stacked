@@ -64,7 +64,7 @@ describe Stacked::User do
       questions = subject.recent_questions(:pagesize => 2)
       questions.should be_sorted_by(:last_edit_date, :desc)
     end
-    
+
     it "finds the user's most viewed questions" do
       questions = subject.questions_by_views(:pagesize => 2)
       questions.should be_sorted_by(:views)
