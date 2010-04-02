@@ -12,14 +12,13 @@ module Spec
       end
 
       def failure_message
-        duration = ActiveSupport::Duration.new(1, [[:seconds, @distance]])
-        "Expected blah to be within the last blah"
+        "Expected time to be within #{@receiver.inspect}, but was not."
       end
 
     end
 
-    def be_within(receiver=nil, &block)
-      Spec::Matchers::Within.new(receiver, &block)
+    def be_within(receiver=nil)
+      Spec::Matchers::Within.new(receiver)
     end
   end
 end

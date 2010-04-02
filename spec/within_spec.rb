@@ -10,5 +10,10 @@ describe Spec::Matchers::Within do
     time = Time.now.to_i
     time.should be_within(1.day)
   end
+  
+  it "fails with an understandable error message" do
+    time = Time.now - 5.days
+    lambda { time.should be_within(5.seconds) }.should raise_error("Expected time to be within 5 seconds, but was not.")
+  end
 
 end
