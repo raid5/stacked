@@ -64,8 +64,6 @@ module Stacked
       parse_questions(request(singular(id) + "favorites/recent", options))
     end
 
-
-
     # Silly Americans.
     alias_method :added_favourites, :added_favorites
     alias_method :favourites, :favorites
