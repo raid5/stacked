@@ -21,7 +21,7 @@ describe Stacked::Question do
   end
   
   it "featured" do
-    subject.featured(:pagesize => 1).first.score.should eql(1)
+    subject.featured(:pagesize => 1).first.score.should eql(13)
   end
   
   it "hot" do

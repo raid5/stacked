@@ -33,6 +33,17 @@ module Stacked
         end
       end
       
+      def association(assoc)
+        instance_eval do
+          assoc = assoc.to_s
+          define_method("#{assoc}=") do |records|
+            instance_variable_set("@#{assoc}", records.map { |record| "Stacked::#{assoc.classify}".constantize.new(record) })
+          end
+          
+          define_method(assoc) { instance_variable_get("@#{assoc}") }
+        end
+      end
+      
       private
       
       def parse(records)
@@ -57,6 +68,8 @@ module Stacked
     end
     
     def initialize(attributes)
+      # p self
+      # p attributes.keys.sort.map { |t| t.to_sym }
       attributes.each do |k, v|
         self.send("#{k}=", v)
       end

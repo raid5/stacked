@@ -18,6 +18,10 @@ module Stacked
                   :title,
                   :up_vote_count,
                   :view_count
+    
+    # TODO: Combine this into a "has_many"-esque method when I'm not jetlagged.
+    association :comments
+    association :answers
                   
     collection :active,
                :featured,
@@ -32,14 +36,6 @@ module Stacked
 
     class << self
       
-    end
-    
-    def comments=(comments)
-      @comments = comments.map { |comment| Stacked::Comment.new(comment) }
-    end
-    
-    def comments
-      @comments
     end
   end
   

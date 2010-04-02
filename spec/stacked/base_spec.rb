@@ -17,6 +17,7 @@ describe Stacked::Base do
     it "limits the results" do
       subject.all(:pagesize => 1).size.should eql(1)
     end
+
   end
   
 end
