@@ -36,43 +36,72 @@ describe Stacked::User do
       end
     end
 
-    # Yes I'm using "favourites" and not "favorites"
-    # This has the intended side-effect of testing the existance of
-    # the alias as well as the real method
-    it "finds the user's favourite questions" do
-      subject.favourites.should_not be_empty
-      subject.favourites.first.should be_is_a(Stacked::Question)
+    context "favourites" do
+
+      # Yes I'm using "favourites" and not "favorites"
+      # This has the intended side-effect of testing the existance of
+      # the alias as well as the real method
+      it "finds the user's favourite questions" do
+        subject.favourites.should_not be_empty
+        subject.favourites.first.should be_is_a(Stacked::Question)
+      end
+
+      it "can pass options to favourites" do
+        subject.favourites.size.should eql(19)
+        subject.favourites(:pagesize => 1).size.should eql(1)
+      end
+
+      it "finds the most recent favourites" do
+        subject.recent_favourites(:pagesize => 2).should be_sorted_by(:last_activity_date, :desc)
+      end
+
+      it "finds the most viewed favourites" do
+        subject.popular_favourites(:pagesize => 2).should be_sorted_by(:view_count, :desc)
+      end
+
+      it "finds the newest favourites" do
+        subject.newest_favourites(:pagesize => 2).should be_sorted_by(:creation_date, :desc)
+      end
+
+      it "finds the favourites in the order they were made favourite" do
+        # How the devil do you test this?
+        subject.added_favourites(:pagesize => 1).first.should be_is_a(Stacked::Question)
+      end
+
     end
 
-    it "can pass options to favourites" do
-      subject.favourites.size.should eql(19)
-      subject.favourites(:pagesize => 1).size.should eql(1)
-    end
+    context "questions" do
 
-    it "finds the user's questions" do
-      question = subject.questions.first
-      question.should be_is_a(Stacked::Question)
-      question.owner_user_id.should eql(subject.id)
-    end
+      it "finds the user's questions" do
+        question = subject.questions.first
+        question.should be_is_a(Stacked::Question)
+        question.owner_user_id.should eql(subject.id)
+      end
 
-    it "can pass options to questions" do
-      subject.questions.size.should eql(22)
-      subject.questions(:pagesize => 1).size.should eql(1)
-    end
+      it "can pass options to questions" do
+        subject.questions.size.should eql(22)
+        subject.questions(:pagesize => 1).size.should eql(1)
+      end
 
-    it "finds the user's recent questions" do
-      questions = subject.recent_questions(:pagesize => 2)
-      questions.should be_sorted_by(:last_edit_date, :desc)
-    end
+      it "finds the user's recent questions" do
+        questions = subject.recent_questions(:pagesize => 2)
+        questions.should be_sorted_by(:last_activity_date, :desc)
+      end
 
-    it "finds the user's most viewed questions" do
-      questions = subject.questions_by_views(:pagesize => 2)
-      questions.should be_sorted_by(:views)
-    end
-    
-    it "finds the user's newest questions" do
-      questions = subject.newest_questions(:pagesize => 2)
-      questions.should be_sorted_by(:creation_date, :desc)
+      it "finds the user's most viewed questions" do
+        questions = subject.questions_by_views(:pagesize => 2)
+        questions.should be_sorted_by(:view_count, :desc)
+      end
+
+      it "finds the user's newest questions" do
+        questions = subject.newest_questions(:pagesize => 2)
+        questions.should be_sorted_by(:creation_date, :desc)
+      end
+
+      it "finds the user's most popular questions" do
+        questions = subject.popular_questions(:pagesize => 2)
+        questions.should be_sorted_by(:score, :desc)
+      end
     end
   end
 end

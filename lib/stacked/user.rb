@@ -37,25 +37,67 @@ module Stacked
       end
     end
 
+    ##############
+    # Favourites #
+    ##############
+
+    def added_favorites(options={})
+      parse_questions(request(singular(id) + "favorites/added", options))
+    end
+
     def favorites(options={})
       parse_questions(request(singular(id) + "favorites", options))
     end
-    
+
+    def newest_favorites(options={})
+      parse_questions(request(singular(id) + "favorites/newest", options))
+    end
+
+    def popular_favorites(options={})
+      parse_questions(request(singular(id) + "favorites/views", options))
+    end
+
+    alias_method :favorites_by_votes, :popular_favorites
+    alias_method :favourites_by_votes, :popular_favorites
+
+    def recent_favorites(options={})
+      parse_questions(request(singular(id) + "favorites/recent", options))
+    end
+
+
+
+    # Silly Americans.
+    alias_method :added_favourites, :added_favorites
+    alias_method :favourites, :favorites
+    alias_method :popular_favourites, :popular_favorites
+    alias_method :recent_favourites, :favorites
+    alias_method :newest_favourites, :newest_favorites
+
+    #############
+    # Questions #
+    #############
+
     def newest_questions(options={})
       parse_questions(request(singular(id) + "questions/newest", options))
     end
-      
+
     def questions(options={})
       parse_questions(request(singular(id) + "questions", options))
     end
 
+    def questions_by_views(options={})
+      parse_questions(request(singular(id) + "questions/views", options))
+    end
+
+    def questions_by_votes(options={})
+      parse_questions(request(singular(id) + "questions/votes", options))
+    end
+
+    alias_method :popular_questions, :questions_by_votes
+
     def recent_questions(options={})
       parse_questions(request(singular(id) + "questions/recent", options))
     end
-
-
-
-    alias_method :favourites, :favorites # Silly Americans.
 
     private
       def parse_questions(result)
