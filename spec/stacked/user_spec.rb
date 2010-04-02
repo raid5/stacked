@@ -40,5 +40,11 @@ describe Stacked::User do
       subject.favourites.should_not be_empty
       subject.favourites.first.should be_is_a(Stacked::Question)
     end
+    
+    it "finds the user's questions" do
+      question = subject.questions.first
+      question.should be_is_a(Stacked::Question)
+      question.owner_user_id.should eql(subject.id)
+    end
   end
 end

@@ -36,6 +36,10 @@ module Stacked
         records(path, options)
       end
     end
+    
+    def questions
+      parse_questions(request(singular(id) + "questions"))
+    end
 
     def favorites
       parse_questions(request(singular(id) + "favorites"))
