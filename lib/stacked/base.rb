@@ -14,6 +14,18 @@ module Stacked
         get(p, :query => { :key => key }.merge!(options))[resource]
       end
       
+      # Define collection methods, such as newest.
+      def collection(*names)
+        # Forgive me Matz for I have sinned.
+        for name in names
+          eval <<-EVAL
+            def self.#{name}(options = {})
+              parse(request(path + "#{name}", options))
+            end
+          EVAL
+        end
+      end
+      
       private
       
       def parse(records)

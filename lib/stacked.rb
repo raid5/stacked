@@ -26,6 +26,8 @@ module Stacked
     end
   end
   autoload :Base
+  autoload :Question
   autoload :User
+
 end
 

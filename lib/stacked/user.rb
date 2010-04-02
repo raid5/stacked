@@ -23,21 +23,10 @@ module Stacked
     alias_method :name, :display_name
     alias_method :type, :user_type
 
+    collection :newest, :oldest, :name
     
     class << self
       alias_method :reputation, :all
-      
-      def newest(options = {})
-        parse(request(path + "newest", options))
-      end
-      
-      def oldest(options = {})
-        parse(request(path + "oldest", options))
-      end
-      
-      def name(options = {})
-        parse(request(path + "name", options))
-      end
       
       def filter(filter, options={})
         options.reverse_merge!(:filter => filter)
