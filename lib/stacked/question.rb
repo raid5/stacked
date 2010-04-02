@@ -1,7 +1,8 @@
 module Stacked
   class Question < Base
-    attr_accessor :accepted_answer_id, 
+    attr_accessor :accepted_answer_id,
                   :answer_count,
+                  :answers,
                   :bounty_closes_date,
                   :community_owned,
                   :creation_date, 
@@ -26,12 +27,19 @@ module Stacked
                :unanswered,
                :votes,
                :week
+    
+    alias_method :created_at, :creation_date
 
     class << self
       
-      def newest(options = {})
-        parse(request(path + "newest", options))
-      end
+    end
+    
+    def comments=(comments)
+      @comments = comments.map { |comment| Stacked::Comment.new(comment) }
+    end
+    
+    def comments
+      @comments
     end
   end
   

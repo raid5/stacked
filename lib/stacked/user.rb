@@ -22,6 +22,7 @@ module Stacked
     alias_method :id, :user_id
     alias_method :name, :display_name
     alias_method :type, :user_type
+    alias_method :created_at, :creation_date
 
     collection :newest, :oldest, :name
     
@@ -30,7 +31,7 @@ module Stacked
       
       def filter(filter, options={})
         options.reverse_merge!(:filter => filter)
-        parse(request(path, options))
+        records(path, options)
       end
     end
   end

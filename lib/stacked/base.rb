@@ -6,12 +6,19 @@ module Stacked
     include HTTParty
     class << self
       def all(options = {})
-        records = request(path, options)
-        parse(records)
+        records(path, options)
       end
       
-      def request(p=path, options={})
-        get(p, :query => { :key => key }.merge!(options))[resource]
+      def find(id, options={})
+        self.new(request(path + id.to_s, options)[resource.singularize])
+      end
+      
+      def records(p = path, options = {})
+        parse(request(p, options)[resource])
+      end
+      
+      def request(p = path, options = {})
+        get(p, :query => { :key => key }.merge!(options))
       end
       
       # Define collection methods, such as newest.
@@ -20,7 +27,7 @@ module Stacked
         for name in names
           eval <<-EVAL
             def self.#{name}(options = {})
-              parse(request(path + "#{name}", options))
+              records(path + "#{name}", options)
             end
           EVAL
         end
