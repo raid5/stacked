@@ -134,6 +134,16 @@ module Stacked
     def reputations(options={})
       parse_reputations(request(singular(id) + "reputation", options))
     end
+    
+    ############
+    # Mentions #
+    ############
+    
+    def mentioned(options={})
+      parse_comments(request(singular(id) + "mentioned", options))
+    end
+    
+    alias_method :mentions, :mentioned
 
     private
 
