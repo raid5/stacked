@@ -4,6 +4,10 @@ describe Stacked::Comment do
   subject { Stacked::Comment }
   
   context "class methods" do
+    
+    it "raises an error if all is called" do
+      lambda { Stacked::Comment.all }.should raise_error(Stacked::NotImplemented, "The requested action is not available in the API.")
+    end
   
     it "finds a single comment" do
       comment = Stacked::Comment.find(2561833)
