@@ -13,5 +13,9 @@ module Stacked
 
     alias_method :created_at, :creation_date
     alias_method :id, :comment_id
+    
+    def post
+      "Stacked::#{post_type.classify}".constantize.find(post_id)
+    end
   end
 end

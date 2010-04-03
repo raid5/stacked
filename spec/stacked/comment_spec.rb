@@ -3,10 +3,21 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Stacked::Comment do
   subject { Stacked::Comment }
   
-  it "finds a single comment" do
-    comment = Stacked::Comment.find(2561833)
-    comment.should be_is_a(Stacked::Comment)
-    comment.owner_user_id.should eql(22656)
+  context "class methods" do
+  
+    it "finds a single comment" do
+      comment = Stacked::Comment.find(2561833)
+      comment.should be_is_a(Stacked::Comment)
+      comment.owner_user_id.should eql(22656)
+    end
+  end
+  
+  context "instance methods" do
+    subject { Stacked::Comment.find(2561833) }
+    
+    it "finds the related post for this comment" do
+      subject.post.should be_is_a(Stacked::Answer)
+    end
   end
   
 end
