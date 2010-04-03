@@ -72,12 +72,21 @@ describe Stacked::Question do
       subject.answers.first.should be_is_a(Stacked::Answer)
     end
 
+    it "retreives tags" do
+      subject.tags.should_not be_empty
+      subject.tags.first.should be_is_a(Stacked::Tag)
+    end
+
     it "finds the user for a question" do
       subject.user.should be_is_a(Stacked::User)
     end
 
     it "finds the accepted answer" do
       subject.accepted_answer.should be_is_a(Stacked::Answer)
+    end
+
+    it "shows the timeline of the question" do
+      subject.timeline.first.should be_is_a(Stacked::Posttimeline)
     end
 
   end

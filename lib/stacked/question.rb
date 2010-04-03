@@ -32,12 +32,20 @@ module Stacked
                :votes,
                :week
 
+    def accepted_answer
+      Answer.find(accepted_answer_id) if accepted_answer_id
+    end
+
     def owner
       @owner ||= User.find(owner_user_id)
     end
 
-    def accepted_answer
-      Answer.find(accepted_answer_id) if accepted_answer_id
+    def timeline(options={})
+      parse_post_timeline(request(singular(id) + "timeline", options))
+    end
+    
+    def tags=(tags)
+      @tags = tags.map { |name| Tag.new(:name => name) }
     end
 
     alias_method :created_at, :creation_date

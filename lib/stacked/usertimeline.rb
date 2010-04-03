@@ -8,5 +8,7 @@ module Stacked
                   :detail,
                   :post_id,
                   :timeline_type
+
+    alias_method :created_at, :creation_date
   end
 end

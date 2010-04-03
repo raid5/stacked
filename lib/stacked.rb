@@ -28,8 +28,10 @@ module Stacked
   autoload :Answer
   autoload :Base
   autoload :Comment
+  autoload :Posttimeline
   autoload :Question
   autoload :Reputation
+  autoload :Tag
   autoload :User
   autoload :Usertimeline
 

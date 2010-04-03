@@ -31,8 +31,6 @@ module Stacked
 
     collection :newest, :oldest, :name
 
-    delegate :request, :singular, :parse, :to => "self.class"
-
     class << self
       alias_method :reputation, :all
 
@@ -148,32 +146,20 @@ module Stacked
     ############
     # Timeline #
     ############
-    
+
     def timeline(options={})
-      parse_timeline(request(singular(id) + "timeline", options))
+      parse_user_timeline(request(singular(id) + "timeline", options))
     end
 
+
+    ########
+    # Tags #
+    ########
+
+    def tags(options={})
+      parse_tags(request(singular(id) + "tags", options))
+
     private
-
-      def parse_comments(result)
-        parse_type(result, "comment")
-      end
-
-      def parse_questions(result)
-        parse_type(result, "question")
-      end
-
-      def parse_reputations(result)
-        parse_type(result, "reputation")
-      end
-      
-      def parse_timeline(result)
-        parse_type(result, "usertimeline")
-      end
-
-      def parse_type(result, type)
-        parse(result[type.pluralize], "Stacked::#{type.classify}".constantize)
-      end
 
   end
 end

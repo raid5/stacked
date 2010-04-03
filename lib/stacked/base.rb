@@ -4,6 +4,9 @@ require 'pathname'
 module Stacked
   class Base
     include HTTParty
+
+    delegate :request, :singular, :parse, :to => "self.class"
+
     class << self
       def all(options = {})
         records(path, options)
@@ -44,8 +47,6 @@ module Stacked
         end
       end
 
-
-
       def singular(id)
         path + id.to_s
       end
@@ -72,6 +73,34 @@ module Stacked
       def resource
         self.to_s.demodulize.downcase.pluralize
       end
+    end
+
+    def parse_comments(result)
+      parse_type(result, "comment")
+    end
+
+    def parse_post_timeline(result)
+      parse_type(result, "posttimeline")
+    end
+
+    def parse_questions(result)
+      parse_type(result, "question")
+    end
+
+    def parse_reputations(result)
+      parse_type(result, "reputation")
+    end
+
+    def parse_tags(result)
+      parse_type(result, "tag")
+    end
+
+    def parse_user_timeline(result)
+      parse_type(result, "usertimeline")
+    end
+
+    def parse_type(result, type)
+      parse(result[type.pluralize], "Stacked::#{type.classify}".constantize)
     end
 
     public
