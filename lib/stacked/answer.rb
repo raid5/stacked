@@ -26,7 +26,7 @@ module Stacked
     end
 
     def user
-
+      User.find(owner_user_id)
     end
   end
 
