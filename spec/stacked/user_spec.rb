@@ -33,9 +33,8 @@ describe Stacked::User do
             :gravatar     => :email_hash,
             :up_votes     => :up_vote_count,
             :user_id      => :id,
-            :user_type    => :type, 
+            :user_type    => :type,
             :views        => :view_count
-
             )
 
     context "comments" do
