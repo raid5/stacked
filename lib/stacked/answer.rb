@@ -18,6 +18,12 @@ module Stacked
     alias_method :created_at, :creation_date
     alias_method :updated_at, :last_edit_date
     alias_method :id, :answer_id
+    
+    class << self
+      def all(*args)
+        raise Stacked::NotImplemented
+      end
+    end
 
     def user
 
