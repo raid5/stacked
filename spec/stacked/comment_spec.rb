@@ -22,6 +22,11 @@ describe Stacked::Comment do
     it "finds the related post for this comment" do
       subject.post.should be_is_a(Stacked::Answer)
     end
+    
+    it "finds who the comment was directed at, or nobody if nobody" do
+      Stacked::Comment.find(2561833).reply_to.should be_is_a(Stacked::User)
+      Stacked::Comment.find(1063043).reply_to.should be_nil
+    end
   end
   
 end
