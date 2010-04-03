@@ -45,10 +45,10 @@ describe Stacked::User do
         subject.popular_comments.should be_sorted_by(:score, :desc)
       end
       
-      it "does some magic" do
+      it "finds all comments directed at a user" do
         # The "magic" numbers for the date range are "around" comment #2561833.
         # This method is a bit funny, why would you want this time-boxed?
-        subject.directed_at(133566, :fromdate => 1270107600, :todate => 1270107700).should be_is_a(Stacked::Comment)
+        subject.directed_at(133566, :fromdate => 1270107600, :todate => 1270107700).first.should be_is_a(Stacked::Comment)
       end
     end
 

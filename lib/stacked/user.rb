@@ -43,7 +43,7 @@ module Stacked
     
     # This method's a bit funny. http://dev.meta.stackoverflow.com/questions/34747/comments-api-method
     def directed_at(comment_id, options={})
-      parse_comments(request(singular(id) + "comments" + comment_id.to_s, options)).first
+      parse_comments(request(singular(id) + "comments" + comment_id.to_s, options))
     end
 
     def comments(options={})
