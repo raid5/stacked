@@ -127,6 +127,14 @@ module Stacked
       parse_questions(request(singular(id) + "questions/recent", options))
     end
 
+    ##############
+    # Reputation #
+    ##############
+
+    def reputations(options={})
+      parse_reputations(request(singular(id) + "reputation", options))
+    end
+
     private
 
       def parse_comments(result)
@@ -135,6 +143,10 @@ module Stacked
 
       def parse_questions(result)
         parse_type(result, "question")
+      end
+
+      def parse_reputations(result)
+        parse_type(result, "reputation")
       end
 
       def parse_type(result, type)

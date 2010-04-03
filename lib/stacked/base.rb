@@ -74,6 +74,12 @@ module Stacked
       end
     end
 
+    public
+
+    def post
+      "Stacked::#{post_type.classify}".constantize.find(post_id)
+    end
+
     def initialize(attributes)
       # p self
       # p attributes.keys.sort.map { |t| t.to_sym }

@@ -29,6 +29,7 @@ module Stacked
   autoload :Base
   autoload :Comment
   autoload :Question
+  autoload :Reputation
   autoload :User
 
   class NotImplemented < StandardError

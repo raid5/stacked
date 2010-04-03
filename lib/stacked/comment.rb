@@ -17,10 +17,6 @@ module Stacked
       end
     end
 
-    def post
-      "Stacked::#{post_type.classify}".constantize.find(post_id)
-    end
-
     def reply_to
       Stacked::User.find(reply_to_user_id) if reply_to_user_id
     end

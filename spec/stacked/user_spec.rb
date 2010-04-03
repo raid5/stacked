@@ -127,5 +127,12 @@ describe Stacked::User do
       end
     end
 
+    context "reputations" do
+      it "finds the users reputations" do
+        reputation = subject.reputations(:pagesize => 1).first
+        reputation.should be_is_a(Stacked::Reputation)
+      end
+    end
+
   end
 end
