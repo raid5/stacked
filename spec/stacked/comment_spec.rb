@@ -19,6 +19,10 @@ describe Stacked::Comment do
   context "instance methods" do
     subject { Stacked::Comment.find(2561833) }
     
+    aliases(:comment_id => :id,
+            :created_at => :creation_date,
+            :owner      => :user)
+    
     it "finds the related post for this comment" do
       subject.post.should be_is_a(Stacked::Answer)
     end
@@ -26,6 +30,10 @@ describe Stacked::Comment do
     it "finds who the comment was directed at, or nobody if nobody" do
       Stacked::Comment.find(2561833).reply_to.should be_is_a(Stacked::User)
       Stacked::Comment.find(1063043).reply_to.should be_nil
+    end
+    
+    it "finds the user who wrote the comment" do
+      subject.owner.should be_is_a(Stacked::User)
     end
   end
   

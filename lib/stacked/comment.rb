@@ -10,9 +10,6 @@ module Stacked
                   :post_type,
                   :reply_to_user_id,
                   :score
-
-    alias_method :created_at, :creation_date
-    alias_method :id, :comment_id
     
     class << self
       def all(*args)
@@ -27,5 +24,14 @@ module Stacked
     def reply_to
       Stacked::User.find(reply_to_user_id) if reply_to_user_id
     end
+    
+    def owner
+      @owner ||= Stacked::User.find(owner_user_id)
+    end
+    
+    alias_method :created_at, :creation_date
+    alias_method :id, :comment_id
+    alias_method :user, :owner
+
   end
 end
