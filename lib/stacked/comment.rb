@@ -32,6 +32,7 @@ module Stacked
     alias_method :created_at, :creation_date
     alias_method :id, :comment_id
     alias_method :user, :owner
+    alias_method :edits, :edit_count
 
   end
 end

@@ -21,7 +21,8 @@ describe Stacked::Comment do
     
     aliases(:comment_id => :id,
             :created_at => :creation_date,
-            :owner      => :user)
+            :owner      => :user,
+            :edits      => :edit_count)
     
     it "finds the related post for this comment" do
       subject.post.should be_is_a(Stacked::Answer)
