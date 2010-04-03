@@ -32,13 +32,23 @@ module Stacked
                :votes,
                :week
 
+    def owner
+      @owner ||= User.find(owner_user_id)
+    end
+    
+    def accepted_answer
+      Answer.find(accepted_answer_id) if accepted_answer_id
+    end
+    
     alias_method :created_at, :creation_date
+    alias_method :down_votes, :down_vote_count
+    alias_method :favorites, :favorite_count
+    alias_method :favourites, :favorite_count
     alias_method :id, :question_id
     alias_method :updated_at, :last_edit_date
-
-    def user
-      User.find(owner_user_id)
-    end
+    alias_method :up_votes, :up_vote_count
+    alias_method :user, :owner
+    alias_method :views, :view_count
 
     class << self
 
