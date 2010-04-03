@@ -25,11 +25,19 @@ describe Stacked::User do
   context "instance methods" do
     subject { Stacked::User.find(22656) }
 
-    aliases(:display_name => :name,
-            :user_type    => :type, 
-            :user_id      => :id,
+    aliases(
+            :answers      => :answer_count,
+            :created_at   => :creation_date,
+            :display_name => :name,
+            :down_votes   => :down_vote_count,
             :gravatar     => :email_hash,
-            :created_at   => :creation_date)
+            :questions    => :question_count,
+            :up_votes     => :up_vote_count,
+            :user_id      => :id,
+            :user_type    => :type, 
+            :views        => :view_count
+
+            )
 
     context "comments" do
       it "finds some of the user's comments" do
