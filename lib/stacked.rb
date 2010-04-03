@@ -31,6 +31,7 @@ module Stacked
   autoload :Question
   autoload :Reputation
   autoload :User
+  autoload :Usertimeline
 
   class NotImplemented < StandardError
     def message

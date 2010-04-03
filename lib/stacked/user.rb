@@ -134,16 +134,24 @@ module Stacked
     def reputations(options={})
       parse_reputations(request(singular(id) + "reputation", options))
     end
-    
+
     ############
     # Mentions #
     ############
-    
+
     def mentioned(options={})
       parse_comments(request(singular(id) + "mentioned", options))
     end
-    
+
     alias_method :mentions, :mentioned
+
+    ############
+    # Timeline #
+    ############
+    
+    def timeline(options={})
+      parse_timeline(request(singular(id) + "timeline", options))
+    end
 
     private
 
@@ -157,6 +165,10 @@ module Stacked
 
       def parse_reputations(result)
         parse_type(result, "reputation")
+      end
+      
+      def parse_timeline(result)
+        parse_type(result, "usertimeline")
       end
 
       def parse_type(result, type)
