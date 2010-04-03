@@ -28,6 +28,10 @@ module Stacked
     def user
       User.find(owner_user_id)
     end
+    
+    def question
+      Question.find(question_id)
+    end
   end
 
 end

@@ -6,9 +6,16 @@ describe Stacked::Answer do
       lambda { Stacked::Answer.all }.should raise_error(Stacked::NotImplemented, "The requested action is not available in the API.")
     end
   end
-  it "finds the user for an answer" do
-    Stacked::Answer.find(1237127).user.display_name.should eql("Daniel Vandersluis")
-  end
   
+  context "instance methods" do
+    subject { Stacked::Answer.find(1237127) }
+    it "finds the user for an answer" do
+      subject.user.display_name.should eql("Daniel Vandersluis")
+    end
+  
+    it "finds the question for an answer" do
+      subject.question.should be_is_a(Stacked::Question)
+    end
+  end
   
 end
