@@ -38,7 +38,7 @@ describe Stacked::Question do
     end
 
     it "votes" do
-      subject.votes(:pagesize => 1).first.up_vote_count.should eql(1189)
+      subject.votes(:pagesize => 1).first.up_vote_count.should eql(1190)
     end
   end
 
