@@ -23,8 +23,7 @@ describe Stacked::User do
   end
 
   context "instance methods" do
-    let(:attributes) { Stacked::Spec::Attributes.user }
-    subject { Stacked::User.new(attributes) }
+    subject { Stacked::User.find(22656) }
 
     { "display_name" => "name",
       "user_type" => "type", 
