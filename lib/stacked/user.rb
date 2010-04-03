@@ -24,7 +24,6 @@ module Stacked
     alias_method :gravatar, :email_hash
     alias_method :id, :user_id
     alias_method :name, :display_name
-    alias_method :questions, :question_count
     alias_method :type, :user_type
     alias_method :up_votes, :up_vote_count
     alias_method :views, :view_count

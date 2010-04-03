@@ -31,7 +31,6 @@ describe Stacked::User do
             :display_name => :name,
             :down_votes   => :down_vote_count,
             :gravatar     => :email_hash,
-            :questions    => :question_count,
             :up_votes     => :up_vote_count,
             :user_id      => :id,
             :user_type    => :type, 
