@@ -43,15 +43,15 @@ describe Stacked::User do
         subject.comments.should_not be_empty
         subject.comments.first.should be_is_a(Stacked::Comment)
       end
-      
+
       it "finds the user's recent comments" do
         subject.recent_comments.should be_sorted_by(:creation_date, :desc)
       end
-      
+
       it "finds the user's most awesome comments" do
         subject.popular_comments.should be_sorted_by(:score, :desc)
       end
-      
+
       it "finds all comments directed at a user" do
         # The "magic" numbers for the date range are "around" comment #2561833.
         # This method is a bit funny, why would you want this time-boxed?

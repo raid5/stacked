@@ -35,11 +35,11 @@ module Stacked
     def owner
       @owner ||= User.find(owner_user_id)
     end
-    
+
     def accepted_answer
       Answer.find(accepted_answer_id) if accepted_answer_id
     end
-    
+
     alias_method :created_at, :creation_date
     alias_method :down_votes, :down_vote_count
     alias_method :favorites, :favorite_count

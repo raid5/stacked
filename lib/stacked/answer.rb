@@ -14,7 +14,7 @@ module Stacked
                   :title,
                   :up_vote_count,
                   :view_count
-    
+
     class << self
       def all(*args)
         raise Stacked::NotImplemented
@@ -24,11 +24,11 @@ module Stacked
     def owner
       @owner ||= User.find(owner_user_id)
     end
-    
+
     def question
       Question.find(question_id)
     end
-    
+
     alias_method :created_at, :creation_date
     alias_method :updated_at, :last_edit_date
     alias_method :id, :answer_id

@@ -44,7 +44,7 @@ describe Stacked::Question do
 
   context "instance methods" do
     subject { Stacked::Question.find(1236996, :comments => true) }
-    
+
     aliases(
             :created_at => :creation_date,
             :down_votes => :down_vote_count,
@@ -56,7 +56,7 @@ describe Stacked::Question do
             :user       => :owner,
             :views      => :view_count
             )
-            
+
 
     it "is the right question" do
       subject.title.should eql("Calculating the distance between two times")
@@ -75,7 +75,7 @@ describe Stacked::Question do
     it "finds the user for a question" do
       subject.user.should be_is_a(Stacked::User)
     end
-    
+
     it "finds the accepted answer" do
       subject.accepted_answer.should be_is_a(Stacked::Answer)
     end

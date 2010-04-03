@@ -30,7 +30,7 @@ module Stacked
   autoload :Comment
   autoload :Question
   autoload :User
-  
+
   class NotImplemented < StandardError
     def message
       "The requested action is not available in the API."
