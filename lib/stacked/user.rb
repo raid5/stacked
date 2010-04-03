@@ -37,9 +37,33 @@ module Stacked
       end
     end
 
+    ############
+    # Comments #
+    ############
+    
+    def comment(id)
+      request(singular(id) + "comments" + id.to_s)
+    end
+
+    def comments(options={})
+      parse_comments(request(singular(id) + "comments", options))
+    end
+    
+    def comments_by_score(options={})
+      parse_comments(request(singular(id) + "comments/score", options))
+    end
+    
+    alias_method :popular_comments, :comments_by_score
+    
+    def recent_comments(options={})
+      parse_comments(request(singular(id) + "comments/recent", options))
+    end
+
     ##############
     # Favourites #
     ##############
+    
+    # Could probably refactor the repetition of request(singular(id)... out of this.
 
     def added_favorites(options={})
       parse_questions(request(singular(id) + "favorites/added", options))
@@ -98,8 +122,18 @@ module Stacked
     end
 
     private
-      def parse_questions(result)
-        parse(result["questions"], Stacked::Question)
+
+      def parse_comments(result)
+        parse_type(result, "comment")
       end
+
+      def parse_questions(result)
+        parse_type(result, "question")
+      end
+
+      def parse_type(result, type)
+        parse(result[type.pluralize], "Stacked::#{type.classify}".constantize)
+      end
+
   end
 end

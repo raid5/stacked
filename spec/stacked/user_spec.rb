@@ -36,6 +36,26 @@ describe Stacked::User do
       end
     end
 
+    context "comments" do
+      it "finds some of the user's comments" do
+        subject.comments.should_not be_empty
+        subject.comments.first.should be_is_a(Stacked::Comment)
+      end
+      
+      it "finds the user's recent comments" do
+        subject.recent_comments.should be_sorted_by(:creation_date, :desc)
+      end
+      
+      it "finds the user's most awesome comments" do
+        subject.popular_comments.should be_sorted_by(:score, :desc)
+      end
+      
+      it "does some magic" do
+        pending("Work out wtf toid is")
+        subject.comment(52444).should be_is_a(Stacked::Comment)
+      end
+    end
+
     context "favourites" do
 
       # Yes I'm using "favourites" and not "favorites"
@@ -103,5 +123,6 @@ describe Stacked::User do
         questions.should be_sorted_by(:score, :desc)
       end
     end
+
   end
 end
