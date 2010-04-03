@@ -51,8 +51,9 @@ describe Stacked::User do
       end
       
       it "does some magic" do
-        pending("Work out wtf toid is")
-        subject.comment(52444).should be_is_a(Stacked::Comment)
+        # The "magic" numbers for the date range are "around" comment #2561833.
+        # This method is a bit funny, why would you want this time-boxed?
+        subject.directed_at(133566, :fromdate => 1270107600, :todate => 1270107700).should be_is_a(Stacked::Comment)
       end
     end
 
