@@ -16,6 +16,13 @@ describe Stacked::Answer do
     it "finds the question for an answer" do
       subject.question.should be_is_a(Stacked::Question)
     end
+    
+    aliases(:views      => :view_count,
+            :up_votes   => :up_vote_count,
+            :answer_id  => :id,
+            :created_at => :creation_date,
+            :updated_at => :last_edit_date)
+    
   end
   
 end

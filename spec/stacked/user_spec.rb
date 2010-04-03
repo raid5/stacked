@@ -25,15 +25,11 @@ describe Stacked::User do
   context "instance methods" do
     subject { Stacked::User.find(22656) }
 
-    { "display_name" => "name",
-      "user_type" => "type", 
-      "user_id" => "id",
-      "gravatar" => "email_hash",
-    }.each do |original, new|    
-      it "#{original} is available as #{name}" do
-        subject.name.should eql(subject.display_name)
-      end
-    end
+    aliases(:display_name => :name,
+            :user_type    => :type, 
+            :user_id      => :id,
+            :gravatar     => :email_hash,
+            :created_at   => :creation_date)
 
     context "comments" do
       it "finds some of the user's comments" do

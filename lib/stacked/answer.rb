@@ -18,6 +18,8 @@ module Stacked
     alias_method :created_at, :creation_date
     alias_method :updated_at, :last_edit_date
     alias_method :id, :answer_id
+    alias_method :up_votes, :up_vote_count
+    alias_method :views, :view_count
     
     class << self
       def all(*args)
