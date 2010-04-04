@@ -2,6 +2,7 @@ module Stacked
   class Answer < Base
     attr_accessor :accepted,
                   :answer_id,
+                  :body,
                   :comments,
                   :community_owned,
                   :creation_date,

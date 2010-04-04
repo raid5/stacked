@@ -8,7 +8,7 @@ describe Stacked::Answer do
   end
 
   context "instance methods" do
-    subject { Stacked::Answer.find(1237127) }
+    subject { Stacked::Answer.find(1237127, :body => true) }
     it "finds the user for an answer" do
       subject.user.display_name.should eql("Daniel Vandersluis")
     end
@@ -22,7 +22,10 @@ describe Stacked::Answer do
             :answer_id  => :id,
             :created_at => :creation_date,
             :updated_at => :last_edit_date)
-
+    
+    it "has a body" do
+      subject.body.should_not be_blank
+    end
   end
 
 end
