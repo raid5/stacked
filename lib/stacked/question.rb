@@ -43,7 +43,7 @@ module Stacked
     def timeline(options={})
       parse_post_timeline(request(singular(id) + "timeline", options))
     end
-    
+
     def tags=(tags)
       @tags = tags.map { |name| Tag.new(:name => name) }
     end

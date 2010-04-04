@@ -139,6 +139,10 @@ describe Stacked::User do
     it "timeline" do
       subject.timeline(:pagesize => 1).first.should be_is_a(Stacked::Usertimeline)
     end
+    
+    it "tags" do
+      subject.tags(:pagesize => 1).first.should be_is_a(Stacked::Tag)
+    end
 
   end
 end

@@ -158,8 +158,7 @@ module Stacked
 
     def tags(options={})
       parse_tags(request(singular(id) + "tags", options))
-
-    private
+    end
 
   end
 end
