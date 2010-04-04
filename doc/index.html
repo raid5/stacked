@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Documentation by YARD 0.5.4</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>Stacked - A Ruby wrapper for the Stack Overflow API (v0.5)</h1>
+
+<p>This library is built around the Stack Overflow (private) API [described here][http://blog.stackoverflow.com/2010/03/stack-overflow-api-private-beta-starts/]. I am under the impression that it covers all the API methods described in [this comprehensive listing][http://dev.meta.stackoverflow.com/questions/34594/overall-api-method-list], but equally aware that this is a first draft and I am likely to make a mistake or four.</p>
+
+<h2>Installation</h2>
+
+<p>To install stacked:</p>
+
+<pre class="code"><span class='sudo identifier id'>sudo</span> <span class='gem identifier id'>gem</span> <span class='install identifier id'>install</span> <span class='stacked identifier id'>stacked</span>
+</pre>
+
+<p>To use it:</p>
+
+<pre class="code"><span class='require identifier id'>require</span> <span class='string val'>'stacked'</span>
+<span class='Stacked constant id'>Stacked</span><span class='colon2 op'>::</span><span class='Question constant id'>Question</span><span class='dot token'>.</span><span class='all identifier id'>all</span>
+</pre>
+
+<p>To report breakages: http://github.com/radar/stacked/issues.</p>
+
+<h2>Some notes</h2>
+
+<p>Methods that are designed to take options in the API are designed that way in the wrapper also, as you'd expect. Take for example +Stacked::Question.all+ which you can pass any options you wish:</p>
+
+<pre class="code"> <span class='Stacked constant id'>Stacked</span><span class='colon2 op'>::</span><span class='Question constant id'>Question</span><span class='dot token'>.</span><span class='all identifier id'>all</span><span class='lparen token'>(</span><span class='symbol val'>:pagesize</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>10</span><span class='rparen token'>)</span>
+</pre>
+
+<p>In this example the amount of questions returned is limited to 10. </p>
+
+<p>Other options include:</p>
+
+<ul>
+<li>page - Specify the page when paginating through a collection.</li>
+<li>body - Set this to true to return the body of the objects you're receiving. By default set to false for questions and answers.</li>
+<li>comments - Set this to true to include the comments in the objects you're receiving.</li>
+<li>fromdate - An integer timestamp of the time you wish to search from (default: 30 days ago, 90 days for reputation).</li>
+<li>todate - An integer timestamp of the time you wish to search to (default: now)</li>
+<li>tagged - A list of tags to scope this find by. Effective only on question methods.</li>
+</ul>
+
+<p>There may be some options I have missed from this list. This is why it's a first draft. So you can tell me I'm missing options, then I can add them and make it a second draft. And so on.</p></div></div>
+    
+    <div id="footer">
+  Generated on Sun Apr  4 18:34:47 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

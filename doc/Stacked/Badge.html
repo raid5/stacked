@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta name="Content-Type" content="text/html; charset=utf-8" />
-<title>Class: Stacked::Reputation</title>
+<title>Class: Stacked::Badge</title>
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
@@ -23,10 +23,10 @@
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (R)</a> &raquo; 
+    <a href="../_index.html">Index (B)</a> &raquo; 
     <span class='title'><a href="../Stacked.html" title="Stacked (module)">Stacked</a></span>
      &raquo; 
-    <span class="title">Reputation</span>
+    <span class="title">Badge</span>
   
   
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -43,7 +43,7 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><h1>Class: Stacked::Reputation 
+    <div id="content"><h1>Class: Stacked::Badge 
   
   
 </h1>
@@ -59,7 +59,7 @@
           
             <li class="next"><a href="Base.html" title="Stacked::Base (class)">Base</a></li>
           
-            <li class="next">Stacked::Reputation</li>
+            <li class="next">Stacked::Badge</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -75,7 +75,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/stacked/reputation.rb</dd>
+    <dd class="r2 last">lib/stacked/badge.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -93,7 +93,7 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#negative_rep-instance_method" title="#negative_rep (instance method)">- (Object) <strong>negative_rep</strong> </a>
+      <a href="#award_count-instance_method" title="#award_count (instance method)">- (Object) <strong>award_count</strong> </a>
     
 
     
@@ -109,7 +109,7 @@
 
   
     <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute negative_rep.
+Returns the value of attribute award_count.
 </p>
 </div></span>
   
@@ -119,9 +119,11 @@ Returns the value of attribute negative_rep.
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#on_date-instance_method" title="#on_date (instance method)">- (Object) <strong>on_date</strong> </a>
+      <a href="#badge_id-instance_method" title="#badge_id (instance method)">- (Object) <strong>badge_id</strong> </a>
     
 
+    
+      (also: #id)
     
   </span>
   
@@ -135,7 +137,7 @@ Returns the value of attribute negative_rep.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute on_date.
+Returns the value of attribute badge_id.
 </p>
 </div></span>
   
@@ -145,7 +147,7 @@ Returns the value of attribute on_date.
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#positive_rep-instance_method" title="#positive_rep (instance method)">- (Object) <strong>positive_rep</strong> </a>
+      <a href="#class-instance_method" title="#class (instance method)">- (Object) <strong>class</strong> </a>
     
 
     
@@ -161,7 +163,7 @@ Returns the value of attribute on_date.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute positive_rep.
+Returns the value of attribute class.
 </p>
 </div></span>
   
@@ -171,7 +173,7 @@ Returns the value of attribute positive_rep.
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#post_id-instance_method" title="#post_id (instance method)">- (Object) <strong>post_id</strong> </a>
+      <a href="#description-instance_method" title="#description (instance method)">- (Object) <strong>description</strong> </a>
     
 
     
@@ -187,7 +189,7 @@ Returns the value of attribute positive_rep.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute post_id.
+Returns the value of attribute description.
 </p>
 </div></span>
   
@@ -197,7 +199,7 @@ Returns the value of attribute post_id.
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#post_type-instance_method" title="#post_type (instance method)">- (Object) <strong>post_type</strong> </a>
+      <a href="#name-instance_method" title="#name (instance method)">- (Object) <strong>name</strong> </a>
     
 
     
@@ -213,33 +215,7 @@ Returns the value of attribute post_id.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute post_type.
-</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#title-instance_method" title="#title (instance method)">- (Object) <strong>title</strong> </a>
-    
-
-    
-  </span>
-  
-  
-    
-    
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute title.
+Returns the value of attribute name.
 </p>
 </div></span>
   
@@ -249,41 +225,13 @@ Returns the value of attribute title.
   </ul>
 
 
-  
-    <h2>Instance Method Summary</h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#score-instance_method" title="#score (instance method)">- (Object) <strong>score</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-    </ul>
-  
-
 
   
   
   
   
   
-  
+  <h2>Method Summary</h2>
   
   <h3 class="inherited">Methods inherited from <a href="Base.html" title="Stacked::Base (class)">Base</a></h3>
   <p class="inherited"><a href="Base.html#all-class_method" title="Stacked::Base.all (method)">all</a>, <a href="Base.html#association-class_method" title="Stacked::Base.association (method)">association</a>, <a href="Base.html#collection-class_method" title="Stacked::Base.collection (method)">collection</a>, <a href="Base.html#find-class_method" title="Stacked::Base.find (method)">find</a>, <a href="Base.html#initialize-instance_method" title="Stacked::Base#initialize (method)">#initialize</a>, <a href="Base.html#parse_answers-instance_method" title="Stacked::Base#parse_answers (method)">#parse_answers</a>, <a href="Base.html#parse_badges-instance_method" title="Stacked::Base#parse_badges (method)">#parse_badges</a>, <a href="Base.html#parse_comments-instance_method" title="Stacked::Base#parse_comments (method)">#parse_comments</a>, <a href="Base.html#parse_post_timeline-instance_method" title="Stacked::Base#parse_post_timeline (method)">#parse_post_timeline</a>, <a href="Base.html#parse_questions-instance_method" title="Stacked::Base#parse_questions (method)">#parse_questions</a>, <a href="Base.html#parse_reputations-instance_method" title="Stacked::Base#parse_reputations (method)">#parse_reputations</a>, <a href="Base.html#parse_tags-instance_method" title="Stacked::Base#parse_tags (method)">#parse_tags</a>, <a href="Base.html#parse_type-instance_method" title="Stacked::Base#parse_type (method)">#parse_type</a>, <a href="Base.html#parse_user_timeline-instance_method" title="Stacked::Base#parse_user_timeline (method)">#parse_user_timeline</a>, <a href="Base.html#post-instance_method" title="Stacked::Base#post (method)">#post</a>, <a href="Base.html#records-class_method" title="Stacked::Base.records (method)">records</a>, <a href="Base.html#request-class_method" title="Stacked::Base.request (method)">request</a>, <a href="Base.html#singular-class_method" title="Stacked::Base.singular (method)">singular</a>, <a href="Base.html#stats-class_method" title="Stacked::Base.stats (method)">stats</a></p>
@@ -299,19 +247,19 @@ Returns the value of attribute title.
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="negative_rep=-instance_method"></span>
-      <span id="negative_rep-instance_method"></span>
+      <span id="award_count=-instance_method"></span>
+      <span id="award_count-instance_method"></span>
       <div class="method_details first">
-  <p class="signature first" id="negative_rep-instance_method">
+  <p class="signature first" id="award_count-instance_method">
   
-    - (<tt>Object</tt>) <strong>negative_rep</strong> 
+    - (<tt>Object</tt>) <strong>award_count</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Returns the value of attribute negative_rep
+Returns the value of attribute award_count
 </p>
 
 
@@ -330,10 +278,10 @@ Returns the value of attribute negative_rep
 5</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/reputation.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/badge.rb', line 3</span>
 
-<span class='def def kw'>def</span> <span class='negative_rep identifier id'>negative_rep</span>
-  <span class='@negative_rep ivar id'>@negative_rep</span>
+<span class='def def kw'>def</span> <span class='award_count identifier id'>award_count</span>
+  <span class='@award_count ivar id'>@award_count</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -342,19 +290,23 @@ Returns the value of attribute negative_rep
 </div>
     
       
-      <span id="on_date=-instance_method"></span>
-      <span id="on_date-instance_method"></span>
+      <span id="badge_id=-instance_method"></span>
+      <span id="badge_id-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="on_date-instance_method">
+  <p class="signature " id="badge_id-instance_method">
   
-    - (<tt>Object</tt>) <strong>on_date</strong> 
+    - (<tt>Object</tt>) <strong>badge_id</strong> 
   
 
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='id-instance_method'>id</span></span>
+    </span>
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Returns the value of attribute on_date
+Returns the value of attribute badge_id
 </p>
 
 
@@ -373,10 +325,10 @@ Returns the value of attribute on_date
 5</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/reputation.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/badge.rb', line 3</span>
 
-<span class='def def kw'>def</span> <span class='on_date identifier id'>on_date</span>
-  <span class='@on_date ivar id'>@on_date</span>
+<span class='def def kw'>def</span> <span class='badge_id identifier id'>badge_id</span>
+  <span class='@badge_id ivar id'>@badge_id</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -385,19 +337,19 @@ Returns the value of attribute on_date
 </div>
     
       
-      <span id="positive_rep=-instance_method"></span>
-      <span id="positive_rep-instance_method"></span>
+      <span id="class=-instance_method"></span>
+      <span id="class-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="positive_rep-instance_method">
+  <p class="signature " id="class-instance_method">
   
-    - (<tt>Object</tt>) <strong>positive_rep</strong> 
+    - (<tt>Object</tt>) <strong>class</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Returns the value of attribute positive_rep
+Returns the value of attribute class
 </p>
 
 
@@ -416,10 +368,10 @@ Returns the value of attribute positive_rep
 5</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/reputation.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/badge.rb', line 3</span>
 
-<span class='def def kw'>def</span> <span class='positive_rep identifier id'>positive_rep</span>
-  <span class='@positive_rep ivar id'>@positive_rep</span>
+<span class='def def kw'>def</span> <span class='class class kw'>class</span>
+  <span class='@class ivar id'>@class</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -428,19 +380,19 @@ Returns the value of attribute positive_rep
 </div>
     
       
-      <span id="post_id=-instance_method"></span>
-      <span id="post_id-instance_method"></span>
+      <span id="description=-instance_method"></span>
+      <span id="description-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="post_id-instance_method">
+  <p class="signature " id="description-instance_method">
   
-    - (<tt>Object</tt>) <strong>post_id</strong> 
+    - (<tt>Object</tt>) <strong>description</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Returns the value of attribute post_id
+Returns the value of attribute description
 </p>
 
 
@@ -459,10 +411,10 @@ Returns the value of attribute post_id
 5</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/reputation.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/badge.rb', line 3</span>
 
-<span class='def def kw'>def</span> <span class='post_id identifier id'>post_id</span>
-  <span class='@post_id ivar id'>@post_id</span>
+<span class='def def kw'>def</span> <span class='description identifier id'>description</span>
+  <span class='@description ivar id'>@description</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -471,19 +423,19 @@ Returns the value of attribute post_id
 </div>
     
       
-      <span id="post_type=-instance_method"></span>
-      <span id="post_type-instance_method"></span>
+      <span id="name=-instance_method"></span>
+      <span id="name-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="post_type-instance_method">
+  <p class="signature " id="name-instance_method">
   
-    - (<tt>Object</tt>) <strong>post_type</strong> 
+    - (<tt>Object</tt>) <strong>name</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Returns the value of attribute post_type
+Returns the value of attribute name
 </p>
 
 
@@ -502,53 +454,10 @@ Returns the value of attribute post_type
 5</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/reputation.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/badge.rb', line 3</span>
 
-<span class='def def kw'>def</span> <span class='post_type identifier id'>post_type</span>
-  <span class='@post_type ivar id'>@post_type</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="title=-instance_method"></span>
-      <span id="title-instance_method"></span>
-      <div class="method_details ">
-  <p class="signature " id="title-instance_method">
-  
-    - (<tt>Object</tt>) <strong>title</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Returns the value of attribute title
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-3
-4
-5</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/reputation.rb', line 3</span>
-
-<span class='def def kw'>def</span> <span class='title identifier id'>title</span>
-  <span class='@title ivar id'>@title</span>
+<span class='def def kw'>def</span> <span class='name identifier id'>name</span>
+  <span class='@name ivar id'>@name</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -558,46 +467,11 @@ Returns the value of attribute title
     
   </div>
 
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-    
-    
-      <div class="method_details first">
-  <p class="signature first" id="score-instance_method">
-  
-    - (<tt>Object</tt>) <strong>score</strong> 
-  
-
-  
-</p><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-9
-10
-11</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/reputation.rb', line 9</span>
-
-<span class='def def kw'>def</span> <span class='score identifier id'>score</span>
-  <span class='positive_rep identifier id'>positive_rep</span> <span class='minus op'>-</span> <span class='negative_rep identifier id'>negative_rep</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
 
 </div>
     
     <div id="footer">
-  Generated on Sun Apr  4 18:34:14 2010 by 
+  Generated on Sun Apr  4 18:34:48 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.4 (ruby-1.8.7).
 </div>
