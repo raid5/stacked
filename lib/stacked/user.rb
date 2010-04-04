@@ -85,8 +85,8 @@ module Stacked
       parse_questions(request(singular(id) + "favorites/views", options))
     end
 
-    alias_method :favorites_by_votes, :popular_favorites
-    alias_method :favourites_by_votes, :popular_favorites
+    alias_method :favorites_by_views, :popular_favorites
+    alias_method :favourites_by_views, :popular_favorites
 
     def recent_favorites(options={})
       parse_questions(request(singular(id) + "favorites/recent", options))

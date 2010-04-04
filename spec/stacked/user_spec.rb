@@ -15,6 +15,10 @@ describe Stacked::User do
     it "gathers the users by name" do
       subject.name(:pagesize => 1).first.name.should eql("[ebarrera]")
     end
+    
+    it "gathers users by reputation" do
+      subject.reputation(:pagesize => 1).first.name.should eql("Jon Skeet")
+    end
 
     it "gathers all the Ryan Bigg users" do
       # Limited to 1 result in case other people want to steal my name.
@@ -78,7 +82,7 @@ describe Stacked::User do
       end
 
       it "finds the most viewed favourites" do
-        subject.popular_favourites(:pagesize => 2).should be_sorted_by(:view_count, :desc)
+        subject.favourites_by_views(:pagesize => 2).should be_sorted_by(:view_count, :desc)
       end
 
       it "finds the newest favourites" do
