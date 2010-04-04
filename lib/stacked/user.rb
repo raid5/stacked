@@ -18,17 +18,6 @@ module Stacked
                   :view_count,
                   :website_url
 
-    alias_method :answers, :answer_count
-    alias_method :created_at, :creation_date
-    alias_method :down_votes, :down_vote_count
-    alias_method :gravatar, :email_hash
-    alias_method :id, :user_id
-    alias_method :name, :display_name
-    alias_method :type, :user_type
-    alias_method :up_votes, :up_vote_count
-    alias_method :views, :view_count
-
-
     collection :newest, :oldest, :name
 
     class << self
@@ -40,17 +29,45 @@ module Stacked
       end
     end
 
+    ###########
+    # Answers #
+    ###########
+    
+    def answers(options={})
+      parse_answers(request(singular(id) + "answers", options))
+    end
+    
+    def answers_by_views(options={})
+      parse_answers(request(singular(id) + "answers/views", options))
+    end
+    
+    def answers_by_votes(options={})
+      parse_answers(request(singular(id) + "answers/votes", options))
+    end
+
+    def newest_answers(options={})
+      parse_answers(request(singular(id) + "answers/newest", options))
+    end
+
     ############
     # Comments #
     ############
-
-    # This method's a bit funny. http://dev.meta.stackoverflow.com/questions/34747/comments-api-method
-    def directed_at(comment_id, options={})
-      parse_comments(request(singular(id) + "comments" + comment_id.to_s, options))
-    end
-
+    
     def comments(options={})
       parse_comments(request(singular(id) + "comments", options))
+    end
+
+    # This method's a bit funny. http://dev.meta.stackoverflow.com/questions/34747/comments-api-method
+    def directed_at(other_user_id, options={})
+      parse_comments(request(singular(id) + "comments" + other_user_id.to_s, options))
+    end
+    
+    def directed_at_by_date(other_user_id, options={})
+      parse_comments(request(singular(id) + "comments" + other_user_id.to_s + "recent", options))
+    end
+  
+    def directed_at_by_score(other_user_id, options={})
+      parse_comments(request(singular(id) + "comments" + other_user_id.to_s + "score", options))
     end
 
     def comments_by_score(options={})
@@ -132,8 +149,17 @@ module Stacked
     def reputations(options={})
       parse_reputations(request(singular(id) + "reputation", options))
     end
+
     def mentioned(options={})
       parse_comments(request(singular(id) + "mentioned", options))
+    end
+    
+    def badges(options={})
+      parse_badges(request(singular(id) + "badges", options))
+    end
+    
+    def tags(options={})
+      parse_tags(request(singular(id) + "tags", options))
     end
 
     alias_method :mentions, :mentioned
@@ -142,14 +168,16 @@ module Stacked
       parse_user_timeline(request(singular(id) + "timeline", options))
     end
 
-    def tags(options={})
-      parse_tags(request(singular(id) + "tags", options))
-    end
-    
-    def badges(options={})
-      parse_badges(request(singular(id) + "badges", options))
-    end
-    
+    alias_method :created_at, :creation_date
+    alias_method :down_votes, :down_vote_count
+    alias_method :gravatar, :email_hash
+    alias_method :id, :user_id
+    alias_method :name, :display_name
+    alias_method :recent_answers, :answers
+    alias_method :type, :user_type
+    alias_method :up_votes, :up_vote_count
+    alias_method :views, :view_count
+
 
   end
 end

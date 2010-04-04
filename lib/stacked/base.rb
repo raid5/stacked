@@ -8,6 +8,11 @@ module Stacked
     delegate :request, :singular, :parse, :to => "self.class"
 
     class << self
+      
+      def stats
+        request(base + "stats")["stats"]
+      end
+      
       def all(options = {})
         records(path, options)
       end
@@ -74,7 +79,11 @@ module Stacked
         self.to_s.demodulize.downcase.pluralize
       end
     end
-    
+
+    def parse_answers(result)
+      parse_type(result, "answer")
+    end
+
     def parse_badges(result)
       parse_type(result, "badge")
     end

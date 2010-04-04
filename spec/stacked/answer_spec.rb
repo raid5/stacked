@@ -22,7 +22,7 @@ describe Stacked::Answer do
             :answer_id  => :id,
             :created_at => :creation_date,
             :updated_at => :last_edit_date)
-    
+
     it "has a body" do
       subject.body.should_not be_blank
     end

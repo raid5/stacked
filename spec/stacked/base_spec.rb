@@ -17,6 +17,10 @@ describe Stacked::Base do
     it "limits the results" do
       subject.all(:pagesize => 1).size.should eql(1)
     end
+    
+    it "stats" do
+      Stacked::Base.stats.keys.sort.should eql(["answers_per_minute", "api_version", "badges_per_minute", "questions_per_minute", "total_answers", "total_badges", "total_comments", "total_questions", "total_unanswered", "total_users", "total_votes"])
+    end
 
   end
 

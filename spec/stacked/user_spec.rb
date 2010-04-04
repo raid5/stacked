@@ -15,7 +15,7 @@ describe Stacked::User do
     it "gathers the users by name" do
       subject.name(:pagesize => 1).first.name.should eql("[ebarrera]")
     end
-    
+
     it "gathers users by reputation" do
       subject.reputation(:pagesize => 1).first.name.should eql("Jon Skeet")
     end
@@ -30,7 +30,6 @@ describe Stacked::User do
     subject { Stacked::User.find(22656) }
 
     aliases(
-            :answers      => :answer_count,
             :created_at   => :creation_date,
             :display_name => :name,
             :down_votes   => :down_vote_count,
@@ -40,6 +39,30 @@ describe Stacked::User do
             :user_type    => :type,
             :views        => :view_count
             )
+
+    context "answers" do
+      it "finds the user's answers" do
+        subject.answers.should_not be_empty
+        subject.answers.first.should be_is_a(Stacked::Answer)
+      end
+
+      it "finds the user's most recent answers" do
+        pending("Waiting for last_activity_date to be implemented.")
+        subject.recent_answers(:pagesize => 2).should be_sorted_by(:last_edit_date, :desc)
+      end
+      
+      it "finds the user's newest answers" do
+        subject.newest_answers(:pagesize => 2).should be_sorted_by(:creation_date, :desc)
+      end
+      
+      it "finds the user's most popular answers" do
+        subject.answers_by_votes(:pagesize => 2).should be_sorted_by(:score, :desc)
+      end
+      
+      it "finds the user's most viewed answers" do
+        subject.answers_by_views(:pagesize => 2).should be_sorted_by(:views, :desc)
+      end
+    end
 
     context "comments" do
       it "finds some of the user's comments" do
@@ -59,6 +82,14 @@ describe Stacked::User do
         # The "magic" numbers for the date range are "around" comment #2561833.
         # This method is a bit funny, why would you want this time-boxed?
         subject.directed_at(133566, :fromdate => 1270107600, :todate => 1270107700).first.should be_is_a(Stacked::Comment)
+      end
+      
+      it "finds all comments directed at a user recently" do
+        subject.directed_at_by_date(133566, :fromdate => 1270107600, :todate => 1270107700).first.should be_is_a(Stacked::Comment)
+      end
+      
+      it "finds all comments directed at a user by score" do
+        subject.directed_at_by_score(133566, :fromdate => 1270107600, :todate => 1270107700).first.should be_is_a(Stacked::Comment)
       end
     end
 
@@ -143,11 +174,11 @@ describe Stacked::User do
     it "timeline" do
       subject.timeline(:pagesize => 1).first.should be_is_a(Stacked::Usertimeline)
     end
-    
+
     it "tags" do
       subject.tags(:pagesize => 1).first.should be_is_a(Stacked::Tag)
     end
-    
+
     it "badges" do
       subject.badges(:pagesize => 1).first.name.should eql(".net")
     end
