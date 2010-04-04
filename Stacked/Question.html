@@ -309,7 +309,7 @@ Returns the value of attribute down_vote_count.
     
 
     
-      (also: #favorites, #favourites)
+      (also: #favourites, #favorites)
     
   </span>
   
@@ -621,7 +621,10 @@ Returns the value of attribute view_count.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+All questions tagged with the given tags.
+</p>
+</div></span>
   
 </li>
 
@@ -641,7 +644,10 @@ Returns the value of attribute view_count.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+All unanswered questions ordered by votes.
+</p>
+</div></span>
   
 </li>
 
@@ -667,7 +673,10 @@ Returns the value of attribute view_count.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The Stacked::Answer representing the accepted answer.
+</p>
+</div></span>
   
 </li>
 
@@ -689,7 +698,10 @@ Returns the value of attribute view_count.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The Stacked::User representation of the owner.
+</p>
+</div></span>
   
 </li>
 
@@ -709,7 +721,10 @@ Returns the value of attribute view_count.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+A timeline of the question.
+</p>
+</div></span>
   
 </li>
 
@@ -1101,7 +1116,7 @@ Returns the value of attribute down_vote_count
 
   
     <span class="aliases">Also known as:
-    <span class="names"><span id='favorites-instance_method'>favorites</span>, <span id='favourites-instance_method'>favourites</span></span>
+    <span class="names"><span id='favourites-instance_method'>favourites</span>, <span id='favorites-instance_method'>favorites</span></span>
     </span>
   
 </p><div class="docstring">
@@ -1597,20 +1612,32 @@ Returns the value of attribute view_count
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+All questions tagged with the given tags. Accepts tags as either <tt>:tags</tt> or
+<tt>:tagged</tt> Must be an Array of tags.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-69
-70
-71
-72
-73</pre>
+78
+79
+80
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/question.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/question.rb', line 78</span>
 
 <span class='def def kw'>def</span> <span class='tagged identifier id'>tagged</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:tagged</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
@@ -1630,18 +1657,29 @@ Returns the value of attribute view_count
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+All unanswered questions ordered by votes.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-65
-66
-67</pre>
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/question.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/question.rb', line 71</span>
 
 <span class='def def kw'>def</span> <span class='unanswered_by_votes identifier id'>unanswered_by_votes</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='records identifier id'>records</span><span class='lparen token'>(</span><span class='path identifier id'>path</span> <span class='plus op'>+</span> <span class='string val'>&quot;unanswered/votes&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span>
@@ -1665,18 +1703,29 @@ Returns the value of attribute view_count
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The Stacked::Answer representing the accepted answer. nil if none accepted
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-36
-37
-38</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/question.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/question.rb', line 38</span>
 
 <span class='def def kw'>def</span> <span class='accepted_answer identifier id'>accepted_answer</span>
   <span class='Answer constant id'>Answer</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='accepted_answer_id identifier id'>accepted_answer_id</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='accepted_answer_id identifier id'>accepted_answer_id</span>
@@ -1698,18 +1747,29 @@ Returns the value of attribute view_count
     <span class="names"><span id='user-instance_method'>user</span></span>
     </span>
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The Stacked::User representation of the owner.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-40
-41
-42</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/question.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/question.rb', line 43</span>
 
 <span class='def def kw'>def</span> <span class='owner identifier id'>owner</span>
   <span class='@owner ivar id'>@owner</span> <span class='opasgn op'>||=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='owner_user_id identifier id'>owner_user_id</span><span class='rparen token'>)</span>
@@ -1727,18 +1787,29 @@ Returns the value of attribute view_count
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A timeline of the question.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-44
-45
-46</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/question.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/question.rb', line 48</span>
 
 <span class='def def kw'>def</span> <span class='timeline identifier id'>timeline</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_post_timeline identifier id'>parse_post_timeline</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;timeline&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -1754,7 +1825,7 @@ Returns the value of attribute view_count
 </div>
     
     <div id="footer">
-  Generated on Sun Apr  4 18:46:53 2010 by 
+  Generated on Sun Apr  4 19:04:23 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.4 (ruby-1.8.7).
 </div>

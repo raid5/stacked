@@ -541,7 +541,10 @@ Returns the value of attribute view_count.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+A Stacked::User object representing the owner of the answer.
+</p>
+</div></span>
   
 </li>
 
@@ -561,7 +564,11 @@ Returns the value of attribute view_count.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+A Stacked::Question object representing the question the answer is in
+response to.
+</p>
+</div></span>
   
 </li>
 
@@ -1329,18 +1336,29 @@ Returns the value of attribute view_count
     <span class="names"><span id='user-instance_method'>user</span></span>
     </span>
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A Stacked::User object representing the owner of the answer.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-25
 26
-27</pre>
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/answer.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/answer.rb', line 26</span>
 
 <span class='def def kw'>def</span> <span class='owner identifier id'>owner</span>
   <span class='@owner ivar id'>@owner</span> <span class='opasgn op'>||=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='owner_user_id identifier id'>owner_user_id</span><span class='rparen token'>)</span>
@@ -1358,21 +1376,33 @@ Returns the value of attribute view_count
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A Stacked::Question object representing the question the answer is in
+response to.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-29
-30
-31</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/answer.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/answer.rb', line 31</span>
 
 <span class='def def kw'>def</span> <span class='question identifier id'>question</span>
-  <span class='Question constant id'>Question</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='question_id identifier id'>question_id</span><span class='rparen token'>)</span>
+  <span class='@question ivar id'>@question</span> <span class='opasgn op'>||=</span> <span class='Question constant id'>Question</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='question_id identifier id'>question_id</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1385,7 +1415,7 @@ Returns the value of attribute view_count
 </div>
     
     <div id="footer">
-  Generated on Sun Apr  4 18:46:54 2010 by 
+  Generated on Sun Apr  4 19:04:24 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.4 (ruby-1.8.7).
 </div>

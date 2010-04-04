@@ -571,7 +571,10 @@ Returns the value of attribute website_url.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Returns users matching the given filter.
+</p>
+</div></span>
   
 </li>
 
@@ -600,8 +603,7 @@ Returns the value of attribute website_url.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Could probably refactor the repetition of request(singular(id)&#8230; out
-of this..
+Paginated favorites in the order they were added.
 </p>
 </div></span>
   
@@ -626,7 +628,7 @@ of this..
 
   
     <span class="summary_desc"><div class='inline'><p>
-Answers #.
+Paginated answers for this user.
 </p>
 </div></span>
   
@@ -648,7 +650,10 @@ Answers #.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Paginated answers by views for this user.
+</p>
+</div></span>
   
 </li>
 
@@ -668,7 +673,10 @@ Answers #.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Paginated answers by votes for this user.
+</p>
+</div></span>
   
 </li>
 
@@ -709,7 +717,7 @@ Answers #.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Comments #.
+Paginated comments for this user.
 </p>
 </div></span>
   
@@ -733,7 +741,10 @@ Comments #.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Paginated comments for this user ordered by score.
+</p>
+</div></span>
   
 </li>
 
@@ -754,7 +765,7 @@ Comments #.
 
   
     <span class="summary_desc"><div class='inline'><p>
-This method&#8217;s a bit funny.
+Find a comment directed at <tt>other_user_id</tt>.
 </p>
 </div></span>
   
@@ -776,7 +787,11 @@ This method&#8217;s a bit funny.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+All comments directed at <tt>other_user_id</tt> ordered by creation date in
+descending order.
+</p>
+</div></span>
   
 </li>
 
@@ -796,7 +811,10 @@ This method&#8217;s a bit funny.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+All comments directed at <tt>other_user_id</tt> ordered by votes.
+</p>
+</div></span>
   
 </li>
 
@@ -818,7 +836,10 @@ This method&#8217;s a bit funny.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Paginated favorites.
+</p>
+</div></span>
   
 </li>
 
@@ -860,7 +881,10 @@ This method&#8217;s a bit funny.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Newest answers for this user.
+</p>
+</div></span>
   
 </li>
 
@@ -917,7 +941,7 @@ Questions #.
     
 
     
-      (also: #favorites_by_views, #popular_favourites, #favourites_by_views)
+      (also: #favorites_by_views, #favourites_by_views, #popular_favourites)
     
   </span>
   
@@ -1009,7 +1033,10 @@ Questions #.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Paginated comments for this user ordered by date created.
+</p>
+</div></span>
   
 </li>
 
@@ -1918,19 +1945,30 @@ Returns the value of attribute website_url
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns users matching the given filter.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-26
 27
 28
-29</pre>
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 27</span>
 
 <span class='def def kw'>def</span> <span class='filter identifier id'>filter</span><span class='lparen token'>(</span><span class='filter identifier id'>filter</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='reverse_merge! fid id'>reverse_merge!</span><span class='lparen token'>(</span><span class='symbol val'>:filter</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='filter identifier id'>filter</span><span class='rparen token'>)</span>
@@ -1962,8 +2000,7 @@ Returns the value of attribute website_url
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Could probably refactor the repetition of request(singular(id)&#8230; out
-of this.
+Paginated favorites in the order they were added.
 </p>
 
 
@@ -1977,12 +2014,12 @@ of this.
       <pre class="lines">
 
 
-89
-90
-91</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 100</span>
 
 <span class='def def kw'>def</span> <span class='added_favorites identifier id'>added_favorites</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_questions identifier id'>parse_questions</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;favorites/added&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2007,7 +2044,7 @@ of this.
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Answers #
+Paginated answers for this user.
 </p>
 
 
@@ -2021,12 +2058,12 @@ Answers #
       <pre class="lines">
 
 
-36
-37
-38</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 38</span>
 
 <span class='def def kw'>def</span> <span class='answers identifier id'>answers</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_answers identifier id'>parse_answers</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;answers&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2044,18 +2081,29 @@ Answers #
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Paginated answers by views for this user.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-40
-41
-42</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 43</span>
 
 <span class='def def kw'>def</span> <span class='answers_by_views identifier id'>answers_by_views</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_answers identifier id'>parse_answers</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;answers/views&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2073,18 +2121,29 @@ Answers #
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Paginated answers by votes for this user.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-44
-45
-46</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 48</span>
 
 <span class='def def kw'>def</span> <span class='answers_by_votes identifier id'>answers_by_votes</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_answers identifier id'>parse_answers</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;answers/votes&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2108,12 +2167,12 @@ Answers #
       <pre class="lines">
 
 
-157
-158
-159</pre>
+169
+170
+171</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 157</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 169</span>
 
 <span class='def def kw'>def</span> <span class='badges identifier id'>badges</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_badges identifier id'>parse_badges</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;badges&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2134,7 +2193,7 @@ Answers #
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Comments #
+Paginated comments for this user.
 </p>
 
 
@@ -2148,12 +2207,12 @@ Comments #
       <pre class="lines">
 
 
-56
-57
-58</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 62</span>
 
 <span class='def def kw'>def</span> <span class='comments identifier id'>comments</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_comments identifier id'>parse_comments</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;comments&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2175,18 +2234,29 @@ Comments #
     <span class="names"><span id='popular_comments-instance_method'>popular_comments</span></span>
     </span>
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Paginated comments for this user ordered by score.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-73
-74
-75</pre>
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 84</span>
 
 <span class='def def kw'>def</span> <span class='comments_by_score identifier id'>comments_by_score</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_comments identifier id'>parse_comments</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;comments/score&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2207,7 +2277,8 @@ Comments #
 </p><div class="docstring">
   <div class="discussion">
     <p>
-This method&#8217;s a bit funny.
+Find a comment directed at <tt>other_user_id</tt>. Works only if you
+specify it the correct range. This method&#8217;s a bit funny.
 http://dev.meta.stackoverflow.com/questions/34747/comments-api-method
 </p>
 
@@ -2222,12 +2293,12 @@ http://dev.meta.stackoverflow.com/questions/34747/comments-api-method
       <pre class="lines">
 
 
-61
-62
-63</pre>
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 69</span>
 
 <span class='def def kw'>def</span> <span class='directed_at identifier id'>directed_at</span><span class='lparen token'>(</span><span class='other_user_id identifier id'>other_user_id</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_comments identifier id'>parse_comments</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;comments&quot;</span> <span class='plus op'>+</span> <span class='other_user_id identifier id'>other_user_id</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2245,18 +2316,30 @@ http://dev.meta.stackoverflow.com/questions/34747/comments-api-method
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+All comments directed at <tt>other_user_id</tt> ordered by creation date in
+descending order.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-65
-66
-67</pre>
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 74</span>
 
 <span class='def def kw'>def</span> <span class='directed_at_by_date identifier id'>directed_at_by_date</span><span class='lparen token'>(</span><span class='other_user_id identifier id'>other_user_id</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_comments identifier id'>parse_comments</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;comments&quot;</span> <span class='plus op'>+</span> <span class='other_user_id identifier id'>other_user_id</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='plus op'>+</span> <span class='string val'>&quot;recent&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2274,18 +2357,29 @@ http://dev.meta.stackoverflow.com/questions/34747/comments-api-method
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+All comments directed at <tt>other_user_id</tt> ordered by votes.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-69
-70
-71</pre>
+79
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 79</span>
 
 <span class='def def kw'>def</span> <span class='directed_at_by_score identifier id'>directed_at_by_score</span><span class='lparen token'>(</span><span class='other_user_id identifier id'>other_user_id</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_comments identifier id'>parse_comments</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;comments&quot;</span> <span class='plus op'>+</span> <span class='other_user_id identifier id'>other_user_id</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='plus op'>+</span> <span class='string val'>&quot;score&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2307,18 +2401,29 @@ http://dev.meta.stackoverflow.com/questions/34747/comments-api-method
     <span class="names"><span id='recent_favourites-instance_method'>recent_favourites</span>, <span id='favourites-instance_method'>favourites</span></span>
     </span>
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Paginated favorites.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-93
-94
-95</pre>
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 105</span>
 
 <span class='def def kw'>def</span> <span class='favorites identifier id'>favorites</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_questions identifier id'>parse_questions</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;favorites&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2346,12 +2451,12 @@ http://dev.meta.stackoverflow.com/questions/34747/comments-api-method
       <pre class="lines">
 
 
-153
-154
-155</pre>
+165
+166
+167</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 153</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 165</span>
 
 <span class='def def kw'>def</span> <span class='mentioned identifier id'>mentioned</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_comments identifier id'>parse_comments</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;mentioned&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2369,18 +2474,29 @@ http://dev.meta.stackoverflow.com/questions/34747/comments-api-method
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Newest answers for this user.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-48
-49
-50</pre>
+53
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 53</span>
 
 <span class='def def kw'>def</span> <span class='newest_answers identifier id'>newest_answers</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_answers identifier id'>parse_answers</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;answers/newest&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2408,12 +2524,12 @@ http://dev.meta.stackoverflow.com/questions/34747/comments-api-method
       <pre class="lines">
 
 
-97
-98
-99</pre>
+109
+110
+111</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 109</span>
 
 <span class='def def kw'>def</span> <span class='newest_favorites identifier id'>newest_favorites</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_questions identifier id'>parse_questions</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;favorites/newest&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2448,12 +2564,12 @@ Questions #
       <pre class="lines">
 
 
-123
-124
-125</pre>
+135
+136
+137</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 135</span>
 
 <span class='def def kw'>def</span> <span class='newest_questions identifier id'>newest_questions</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_questions identifier id'>parse_questions</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;questions/newest&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2472,7 +2588,7 @@ Questions #
 
   
     <span class="aliases">Also known as:
-    <span class="names"><span id='favorites_by_views-instance_method'>favorites_by_views</span>, <span id='popular_favourites-instance_method'>popular_favourites</span>, <span id='favourites_by_views-instance_method'>favourites_by_views</span></span>
+    <span class="names"><span id='favorites_by_views-instance_method'>favorites_by_views</span>, <span id='favourites_by_views-instance_method'>favourites_by_views</span>, <span id='popular_favourites-instance_method'>popular_favourites</span></span>
     </span>
   
 </p><table class="source_code">
@@ -2481,12 +2597,12 @@ Questions #
       <pre class="lines">
 
 
-101
-102
-103</pre>
+113
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 113</span>
 
 <span class='def def kw'>def</span> <span class='popular_favorites identifier id'>popular_favorites</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_questions identifier id'>parse_questions</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;favorites/views&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2510,12 +2626,12 @@ Questions #
       <pre class="lines">
 
 
-127
-128
-129</pre>
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 139</span>
 
 <span class='def def kw'>def</span> <span class='questions identifier id'>questions</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_questions identifier id'>parse_questions</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;questions&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2539,12 +2655,12 @@ Questions #
       <pre class="lines">
 
 
-131
-132
-133</pre>
+143
+144
+145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 143</span>
 
 <span class='def def kw'>def</span> <span class='questions_by_views identifier id'>questions_by_views</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_questions identifier id'>parse_questions</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;questions/views&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2572,12 +2688,12 @@ Questions #
       <pre class="lines">
 
 
-135
-136
-137</pre>
+147
+148
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 135</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 147</span>
 
 <span class='def def kw'>def</span> <span class='questions_by_votes identifier id'>questions_by_votes</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_questions identifier id'>parse_questions</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;questions/votes&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2595,18 +2711,29 @@ Questions #
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Paginated comments for this user ordered by date created.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-79
-80
-81</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 91</span>
 
 <span class='def def kw'>def</span> <span class='recent_comments identifier id'>recent_comments</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_comments identifier id'>parse_comments</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;comments/recent&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2630,12 +2757,12 @@ Questions #
       <pre class="lines">
 
 
-108
-109
-110</pre>
+120
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 120</span>
 
 <span class='def def kw'>def</span> <span class='recent_favorites identifier id'>recent_favorites</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_questions identifier id'>parse_questions</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;favorites/recent&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2659,12 +2786,12 @@ Questions #
       <pre class="lines">
 
 
-141
-142
-143</pre>
+153
+154
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 141</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 153</span>
 
 <span class='def def kw'>def</span> <span class='recent_questions identifier id'>recent_questions</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_questions identifier id'>parse_questions</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;questions/recent&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2699,12 +2826,12 @@ Other stuff #
       <pre class="lines">
 
 
-149
-150
-151</pre>
+161
+162
+163</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 161</span>
 
 <span class='def def kw'>def</span> <span class='reputations identifier id'>reputations</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_reputations identifier id'>parse_reputations</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;reputation&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2728,12 +2855,12 @@ Other stuff #
       <pre class="lines">
 
 
-161
-162
-163</pre>
+173
+174
+175</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 173</span>
 
 <span class='def def kw'>def</span> <span class='tags identifier id'>tags</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_tags identifier id'>parse_tags</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;tags&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2757,12 +2884,12 @@ Other stuff #
       <pre class="lines">
 
 
-167
-168
-169</pre>
+179
+180
+181</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 167</span>
+      <pre class="code"><span class="info file"># File 'lib/stacked/user.rb', line 179</span>
 
 <span class='def def kw'>def</span> <span class='timeline identifier id'>timeline</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='parse_user_timeline identifier id'>parse_user_timeline</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='lparen token'>(</span><span class='singular identifier id'>singular</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;timeline&quot;</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -2778,7 +2905,7 @@ Other stuff #
 </div>
     
     <div id="footer">
-  Generated on Sun Apr  4 18:46:53 2010 by 
+  Generated on Sun Apr  4 19:04:23 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.4 (ruby-1.8.7).
 </div>
