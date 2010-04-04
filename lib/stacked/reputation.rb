@@ -6,6 +6,8 @@ module Stacked
                   :post_id,
                   :post_type,
                   :title
+
+    # Return the cumulative score of this reputation.
     def score
       positive_rep - negative_rep
     end
