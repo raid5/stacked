@@ -3,9 +3,7 @@ module Stacked
     attr_accessor :count,
                   :name
 
-    collection :popular
-    collection :name
-    collection :recent
+    collection :popular, :name, :recent
 
   end
 end
