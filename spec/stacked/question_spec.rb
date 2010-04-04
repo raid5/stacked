@@ -8,8 +8,8 @@ describe Stacked::Question do
     end
 
     it "gets a list of questions with comments" do
-      pending("Cannot currently get a list of questions with comments")
-      subject.all(:comments => true)
+      subject.all(:pagesize => 1).first.comments.should be_nil
+      subject.all(:comments => true, :pagesize => 1).first.comments.should_not be_nil
     end
 
     it "active" do
