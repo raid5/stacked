@@ -21,13 +21,14 @@ module Stacked
         raise Stacked::NotImplemented
       end
     end
-
+    
+    # Return a Stacked::User object representing the owner of the answer.
     def owner
       @owner ||= User.find(owner_user_id)
     end
 
     def question
-      Question.find(question_id)
+      @question ||= Question.find(question_id)
     end
 
     alias_method :created_at, :creation_date
