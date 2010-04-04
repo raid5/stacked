@@ -2,11 +2,10 @@ module Stacked
   class Badge < Base
     attr_accessor :award_count,
                   :badge_id,
-                  :class,
                   :description,
                   :name,
-                  :tag_based,
-                  :rank
+                  :rank,
+                  :tag_based
 
     collection :tags
 
