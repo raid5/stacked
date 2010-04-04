@@ -22,11 +22,12 @@ module Stacked
       end
     end
     
-    # Return a Stacked::User object representing the owner of the answer.
+    # A Stacked::User object representing the owner of the answer.
     def owner
       @owner ||= User.find(owner_user_id)
     end
-
+   
+    # A Stacked::Question object representing the question the answer is in response to.
     def question
       @question ||= Question.find(question_id)
     end

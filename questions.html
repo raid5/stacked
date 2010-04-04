@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Stacked - Stack Overflow API Gem</title>
+    <link rel='stylesheet' href='stylesheet.css'>
+    <script src='jquery.js'></script>
+  </head>
+  <body>
+    <h1><a href='index.html'>Stacked - A Ruby wrapper for the Stack Overflow API</a></h1>
+    <h2>Questions</h2>
+    <section>
+      <h3><a href="#" onclick="$('#all_questions').toggle();">All Questions</a></h3>
+      <div class='hidden' id='all_questions'>
+To retrieve a list of the 30 most recently active questions from the API use:
+<pre>
+  Stacked::Question.all</pre>
+
+If you wish to gather all the questions with their respective <code>body</code>, specify so:
+
+<pre>
+  Stacked::Question.all(:body => true)
+</pre>
+
+This method also supports pagination through the <code>page</code> and <code>pagesize</code> options:
+
+<pre>
+  Stacked::Question.all(:pagesize => 10, :page => 2)
+</pre>
+
+This method is also aliased as <code>Stacked::Question.active</code>
+      </div>
+    </section>
+    
+    <section>
+      <h3><a href='#' onclick="$('#newest_questions').toggle();">Newest Questions</a></h3>
+      <div class='hidden' id='newest_questions'>
+        
+      </div>
+    </section>
+  </body>
+</html>

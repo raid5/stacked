@@ -8,4 +8,5 @@ rm -rf * &&
 mv ../stacked-doc/* . &&
 git add . &&
 git commit -m "Updated documentation." &&
-git push origin gh-pages
+git push origin gh-pages &&
+git checkout master
