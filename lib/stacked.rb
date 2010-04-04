@@ -27,6 +27,7 @@ module Stacked
   end
   autoload :Answer
   autoload :Base
+  autoload :Badge
   autoload :Comment
   autoload :Posttimeline
   autoload :Question

@@ -125,40 +125,31 @@ module Stacked
       parse_questions(request(singular(id) + "questions/recent", options))
     end
 
-    ##############
-    # Reputation #
-    ##############
+    ###############
+    # Other stuff #
+    ###############
 
     def reputations(options={})
       parse_reputations(request(singular(id) + "reputation", options))
     end
-
-    ############
-    # Mentions #
-    ############
-
     def mentioned(options={})
       parse_comments(request(singular(id) + "mentioned", options))
     end
 
     alias_method :mentions, :mentioned
 
-    ############
-    # Timeline #
-    ############
-
     def timeline(options={})
       parse_user_timeline(request(singular(id) + "timeline", options))
     end
 
-
-    ########
-    # Tags #
-    ########
-
     def tags(options={})
       parse_tags(request(singular(id) + "tags", options))
     end
+    
+    def badges(options={})
+      parse_badges(request(singular(id) + "badges", options))
+    end
+    
 
   end
 end

@@ -147,6 +147,10 @@ describe Stacked::User do
     it "tags" do
       subject.tags(:pagesize => 1).first.should be_is_a(Stacked::Tag)
     end
+    
+    it "badges" do
+      subject.badges(:pagesize => 1).first.name.should eql(".net")
+    end
 
   end
 end

@@ -74,6 +74,10 @@ module Stacked
         self.to_s.demodulize.downcase.pluralize
       end
     end
+    
+    def parse_badges(result)
+      parse_type(result, "badge")
+    end
 
     def parse_comments(result)
       parse_type(result, "comment")
