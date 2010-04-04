@@ -43,7 +43,7 @@ describe Stacked::Question do
   end
 
   context "instance methods" do
-    subject { Stacked::Question.find(1236996, :comments => true) }
+    subject { Stacked::Question.find(1236996, :comments => true, :body => true) }
 
     aliases(
             :created_at => :creation_date,
@@ -60,6 +60,10 @@ describe Stacked::Question do
 
     it "is the right question" do
       subject.title.should eql("Calculating the distance between two times")
+    end
+    
+    it "has a body" do
+      subject.body.should_not be_blank
     end
 
     it "retreives comments" do

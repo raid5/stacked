@@ -3,6 +3,7 @@ module Stacked
     attr_accessor :accepted_answer_id,
                   :answer_count,
                   :answers,
+                  :body,
                   :bounty_closes_date,
                   :community_owned,
                   :creation_date, 
