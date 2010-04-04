@@ -4,7 +4,8 @@ module Stacked
                   :badge_id,
                   :class,
                   :description,
-                  :name
+                  :name,
+                  :tag_based
 
     collection :tags
 
