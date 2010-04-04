@@ -1,5 +1,6 @@
 #!/bin/bash
 yardoc lib/**/*.rb &&
+rm -rf ../stacked-doc &&
 mkdir -p ../stacked-doc &&
 mv doc/* ../stacked-doc &&
 git checkout gh-pages &&
