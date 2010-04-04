@@ -40,6 +40,18 @@ describe Stacked::Question do
     it "votes" do
       subject.votes(:pagesize => 1).first.up_vote_count.should eql(1190)
     end
+    
+    it "unanswered by votes" do
+      question = subject.unanswered_by_votes(:pagesize => 1).first
+      question.should be_is_a(Stacked::Question)
+      question.answers.should be_blank
+    end
+    
+    it "tagged" do
+      question = subject.tagged(:tags => ["ruby", "ruby-on-rails"], :pagesize => 1).first
+      question.tags.map(&:name).should include("ruby")
+      question.tags.map(&:name).should include("ruby-on-rails")
+    end
   end
 
   context "instance methods" do

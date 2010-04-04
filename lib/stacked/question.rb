@@ -60,8 +60,17 @@ module Stacked
     alias_method :views, :view_count
 
     class << self
-
+      alias_method :newest_unanswered, :unanswered
+      
+      def unanswered_by_votes(options={})
+        records(path + "unanswered/votes", options)
+      end
+      
+      def tagged(options={})
+        options[:tagged] ||= []
+        options[:tagged] = (options[:tagged] << options[:tags]).join(", ")
+        records(path + "tagged", options)
+      end
     end
   end
-
 end
