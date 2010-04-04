@@ -9,7 +9,7 @@ require 'active_support'
 begin
   require 'active_support/all'
 rescue LoadError
-endg
+end
 
 module Stacked
   # TODO: Use this coupled with autoload_under when AS 3.0 becomes "stable":

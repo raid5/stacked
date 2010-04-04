@@ -5,7 +5,8 @@ module Stacked
                   :class,
                   :description,
                   :name,
-                  :tag_based
+                  :tag_based,
+                  :rank
 
     collection :tags
 
