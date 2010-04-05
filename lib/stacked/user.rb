@@ -158,9 +158,11 @@ module Stacked
     # Other stuff #
     ###############
 
-    def reputations(options={})
-      parse_reputations(request(singular(id) + "reputation", options))
+    def rep_changes(options={})
+      parse_rep_changes(request(singular(id) + "reputation", options))
     end
+    
+    alias_method :reputation_changes, :rep_changes
 
     def mentioned(options={})
       parse_comments(request(singular(id) + "mentioned", options))

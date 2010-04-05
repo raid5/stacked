@@ -38,7 +38,7 @@ describe Stacked::Question do
     end
 
     it "votes" do
-      subject.votes(:pagesize => 1).first.up_vote_count.should eql(1191)
+      subject.votes(:pagesize => 1).first.up_vote_count.should eql(1192)
     end
 
     it "unanswered by votes" do

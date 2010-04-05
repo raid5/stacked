@@ -1,5 +1,5 @@
 module Stacked
-  class Reputation < Base
+  class Repchange < Base
     attr_accessor :negative_rep,
                   :on_date,
                   :positive_rep,

@@ -11,7 +11,7 @@ module Stacked
       
       # Return the stats provided by the API.
       def stats
-        request(base + "stats")["stats"]
+        request(base + "stats")["statistics"].first
       end
       
       # All the first group (depends on pagesize) of records for current class.
@@ -21,7 +21,7 @@ module Stacked
 
       # A single record belonging to the current class.
       def find(id, options={})
-        self.new(request(singular(id), options)[resource.singularize])
+        records(singular(id), options).first
       end
       
       # All records for a given request path.
@@ -121,8 +121,8 @@ module Stacked
     end
 
     # Convert a reputation result into a collection of Stacked::Reputation objects.
-    def parse_reputations(result)
-      parse_type(result, "reputation")
+    def parse_rep_changes(result)
+      parse_type(result, "repchange")
     end
 
     # Convert a tags result into a collection of Stacked::Tag objects.

@@ -35,7 +35,7 @@ module Stacked
   autoload :Comment
   autoload :Posttimeline
   autoload :Question
-  autoload :Reputation
+  autoload :Repchange
   autoload :Tag
   autoload :User
   autoload :Usertimeline

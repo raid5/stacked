@@ -161,9 +161,9 @@ describe Stacked::User do
       end
     end
 
-    it "reputations" do
-      reputation = subject.reputations(:pagesize => 1).first
-      reputation.should be_is_a(Stacked::Reputation)
+    it "reputation changes" do
+      change = subject.rep_changes(:pagesize => 1).first
+      change.should be_is_a(Stacked::Repchange)
     end
 
     it "mentioned / mentions" do

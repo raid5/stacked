@@ -1,8 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Stacked::Reputation do
+describe Stacked::Repchange do
   # Being very particular about what Reputation we mean...
-  subject { Stacked::User.find(22656).reputations(:fromdate => 1270132345, :todate => 1270132348).first }
+  subject { Stacked::User.find(22656).rep_changes(:fromdate => 1270132345, :todate => 1270132348).first }
 
   it "should be able to find the related post" do
     subject.post.should be_is_a(Stacked::Answer)

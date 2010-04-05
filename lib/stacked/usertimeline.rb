@@ -7,6 +7,7 @@ module Stacked
                   :description,
                   :detail,
                   :post_id,
+                  :post_type,
                   :timeline_type
 
     alias_method :created_at, :creation_date
