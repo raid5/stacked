@@ -34,7 +34,7 @@ module Stacked
   autoload :Base
   autoload :Badge
   autoload :Comment
-  autoload :Posttimeline
+  autoload :PostTimeline
   autoload :Question
   autoload :Repchange
   autoload :Tag
