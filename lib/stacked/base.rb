@@ -112,9 +112,9 @@ module Stacked
       parse_type(result, "comment")
     end
 
-    # Convert a post timeline result into a collection of Stacked::Posttimeline objects.
+    # Convert a post timeline result into a collection of Stacked::PostTimeline objects.
     def parse_post_timeline(result)
-      parse_type(result, "posttimeline")
+      parse_type(result, "post_timeline")
     end
 
     # Convert a questions result into a collection of Stacked::Question objects.
