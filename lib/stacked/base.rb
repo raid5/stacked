@@ -46,17 +46,18 @@ module Stacked
         end
       end
 
+      # TODO: not working! -ajm
       # Defines association methods for things such as comments on questions.
-      def association(assoc)
-        instance_eval do
-          assoc = assoc.to_s
-          define_method("#{assoc}=") do |records|
-            instance_variable_set("@#{assoc}", records.map { |record| "Stacked::#{assoc.classify}".constantize.new(record) })
-          end
-
-          define_method(assoc) { instance_variable_get("@#{assoc}") }
-        end
-      end
+      # def association(assoc)
+      #   instance_eval do
+      #     assoc = assoc.to_s
+      #     define_method("#{assoc}=") do |records|
+      #       instance_variable_set("@#{assoc}", records.map { |record| "Stacked::#{assoc.classify}".constantize.new(record) })
+      #     end
+      # 
+      #     define_method(assoc) { instance_variable_get("@#{assoc}") }
+      #   end
+      # end
 
       # The path to the singular resource.
       def singular(id)
@@ -150,12 +151,25 @@ module Stacked
 
     # Creates a new object of the given class based on the attributes passed in.
     def initialize(attributes={})
-      # p self
-      # p attributes.keys.sort.map { |t| t.to_sym }
-      attributes.each do |k, v|
-        attr_sym = "#{k}=".to_sym
-        self.send(attr_sym, v) if self.respond_to?(attr_sym)
+      self.define_attributes(attributes)
+      
+      # attributes.each do |k, v|
+      #   attr_sym = "#{k}=".to_sym
+      #   self.send(attr_sym, v) if self.respond_to?(attr_sym)
+      # end
+    end
+    
+    def metaclass
+      class << self
+        self
       end
+    end
+    
+    def define_attributes(hash={})
+      hash.each_pair { |key, value|
+        metaclass.send :attr_accessor, key
+        send "#{key}=".to_sym, value
+      }
     end
   end
 end
