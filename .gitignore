@@ -1,7 +1,9 @@
+.bundle
 .yardoc
 *.sw?
 .DS_Store
 coverage
 rdoc
 pkg
-stacked.gemspec
+notes.md
+stacked-*.gem

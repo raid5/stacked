@@ -1,1 +1,3 @@
-gem 'httparty', '0.4.5'
+source :rubygems
+
+gemspec

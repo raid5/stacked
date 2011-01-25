@@ -60,19 +60,21 @@ module Stacked
 
       # The path to the singular resource.
       def singular(id)
-        path + id.to_s
+        path + '/' + id.to_s
       end
 
       private
 
       # The root URL of the API,
       def base
-        Pathname.new("http://api.stackoverflow.com/0.5/")
+        #"http://api.stackoverflow.com/1.0/"
+        @base_url
       end
 
       # The key to let us in.
       def key
-        "knockknock"
+        "AI2JqfSeMkyGKOvBZwzojQ"
+        #"knockknock"
       end
       
       # Convert the records into actual objects.
@@ -83,7 +85,7 @@ module Stacked
       # The path to this particular part of the API.
       # Example if the class is Stacked::Question:
       #
-      # http://api.stackoverflow.com/0.5/questions
+      # http://api.stackoverflow.com/1.0/questions
       
       def path
         base + resource
@@ -148,11 +150,12 @@ module Stacked
     end
 
     # Creates a new object of the given class based on the attributes passed in.
-    def initialize(attributes)
+    def initialize(attributes={})
       # p self
       # p attributes.keys.sort.map { |t| t.to_sym }
       attributes.each do |k, v|
-        self.send("#{k}=", v)
+        attr_sym = "#{k}=".to_sym
+        self.send(attr_sym, v) if self.respond_to?(attr_sym)
       end
     end
   end

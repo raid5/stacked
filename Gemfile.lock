@@ -1,0 +1,35 @@
+PATH
+  remote: .
+  specs:
+    stacked (1.0.0)
+      activesupport (~> 3.0.3)
+      httparty (~> 0.7.3)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.0.3)
+    crack (0.1.8)
+    diff-lcs (1.1.2)
+    httparty (0.7.3)
+      crack (= 0.1.8)
+    rake (0.8.7)
+    rspec (2.4.0)
+      rspec-core (~> 2.4.0)
+      rspec-expectations (~> 2.4.0)
+      rspec-mocks (~> 2.4.0)
+    rspec-core (2.4.0)
+    rspec-expectations (2.4.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.4.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activesupport (~> 3.0.3)
+  bundler (~> 1.0)
+  httparty (~> 0.7.3)
+  rake (~> 0.8)
+  rspec (~> 2.4)
+  stacked!
