@@ -68,13 +68,12 @@ module Stacked
       # The root URL of the API,
       def base
         #"http://api.stackoverflow.com/1.0/"
-        @base_url
+        Stacked::Client.base_url
       end
 
       # The key to let us in.
       def key
-        "AI2JqfSeMkyGKOvBZwzojQ"
-        #"knockknock"
+        Stacked::Client.api_key
       end
       
       # Convert the records into actual objects.

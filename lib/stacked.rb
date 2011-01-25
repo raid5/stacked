@@ -29,7 +29,6 @@ module Stacked
       super(klass, "stacked/#{klass.to_s.underscore}")
     end
   end
-  
   autoload :Client
   autoload :Answer
   autoload :Base
