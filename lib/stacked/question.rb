@@ -25,14 +25,14 @@ module Stacked
     # association :comments
     # association :answers
 
-    collection :active,
-               :featured,
-               :hot,
-               :month,
-               :newest,
-               :unanswered,
-               :votes,
-               :week
+    # collection :active,
+    #            :featured,
+    #            :hot,
+    #            :month,
+    #            :newest,
+    #            :unanswered,
+    #            :votes,
+    #            :week
 
     # Answers for the question.
     def answers(options={})
@@ -44,6 +44,11 @@ module Stacked
       parse_comments(request(singular(question_id) + "/comments", options))
     end
 
+    # A timeline of the question.
+    def timeline(options={})
+      parse_post_timeline(request(singular(question_id) + "/timeline", options))
+    end
+    
     # The Stacked::Answer representing the accepted answer.
     # nil if none accepted
     def accepted_answer
@@ -51,13 +56,8 @@ module Stacked
     end
 
     # The Stacked::User representation of the owner.
-    def owner
+    def owner_summary
       @owner ||= User.find(owner_user_id)
-    end
-
-    # A timeline of the question.
-    def timeline(options={})
-      parse_post_timeline(request(singular(question_id) + "/timeline", options))
     end
 
     # Helper method for creating Stacked::Tag objects when initializing new Stacked::Question objects.
@@ -76,21 +76,26 @@ module Stacked
     # alias_method :views, :view_count
 
     class << self
-      alias_method :newest_unanswered, :unanswered
+      # alias_method :newest_unanswered, :unanswered
 
-      # All unanswered questions ordered by votes.
-      def unanswered_by_votes(options={})
-        records(path + "unanswered/votes", options)
+      def search(*args)
+        raise Stacked::NotImplemented
       end
 
+      # All unanswered questions.
+      def unanswered(options={})
+        records(path + "/unanswered", options)
+      end
+
+      # API v1.0 moved tags to /questions
       # All questions tagged with the given tags.
       # Accepts tags as either +:tags+ or +:tagged+
       # Must be an Array of tags.
-      def tagged(options={})
-        options[:tagged] ||= []
-        options[:tagged] = (options[:tagged] << options[:tags]).join(", ")
-        records(path + "tagged", options)
-      end
+      # def tagged(options={})
+      #   options[:tagged] ||= []
+      #   options[:tagged] = (options[:tagged] << options[:tags]).join(", ")
+      #   records(path + "tagged", options)
+      # end
     end
 
     # def metaclass

@@ -1,5 +1,6 @@
 require 'httparty'
-require 'pathname'
+#require 'pathname'
+#require 'ruby-prof'
 
 module Stacked
   class Base
@@ -12,6 +13,11 @@ module Stacked
       # Return the stats provided by the API.
       def stats
         request(base + "stats")["statistics"].first
+      end
+      
+      def search(options = {})
+        #parse_questions(request(base + "search", options)["questions"])
+        parse(request(base + "search", options)[resource])
       end
       
       # All the first group (depends on pagesize) of records for current class.
@@ -34,17 +40,18 @@ module Stacked
         get(p, :query => { :key => key }.merge!(options))
       end
 
+      # Deprecated in v1.0 (maybe sooner) -ajm
       # Define collection methods, such as newest.
-      def collection(*names)
-        # Forgive me Matz for I have sinned.
-        for name in names
-          eval <<-EVAL
-            def self.#{name}(options = {})
-              records(path + "#{name}", options)
-            end
-          EVAL
-        end
-      end
+      # def collection(*names)
+      #   # Forgive me Matz for I have sinned.
+      #   for name in names
+      #     eval <<-EVAL
+      #       def self.#{name}(options = {})
+      #         records(path + "/#{name}", options)
+      #       end
+      #     EVAL
+      #   end
+      # end
 
       # TODO: not working! -ajm
       # Defines association methods for things such as comments on questions.
@@ -62,6 +69,11 @@ module Stacked
       # The path to the singular resource.
       def singular(id)
         path + '/' + id.to_s
+      end
+      
+      # Convert a user result into a collection of Stacked::User objects.
+      def parse_users(result)
+        parse(result['users'], "Stacked::User".constantize)
       end
 
       private
@@ -124,13 +136,18 @@ module Stacked
 
     # Convert a reputation result into a collection of Stacked::Reputation objects.
     def parse_rep_changes(result)
-      parse_type(result, "repchange")
+      parse_type(result, "rep_change")
     end
 
     # Convert a tags result into a collection of Stacked::Tag objects.
     def parse_tags(result)
       parse_type(result, "tag")
     end
+    
+    # Convert a user result into a collection of Stacked::User objects.
+    # def parse_users(result)
+    #   parse_type(result, "user")
+    # end
     
     # Convert a user timeline result into a collection of Stacked::Usertimeline objects.
     def parse_user_timeline(result)
@@ -153,10 +170,15 @@ module Stacked
     def initialize(attributes={})
       self.define_attributes(attributes)
       
+      # RubyProf.start
       # attributes.each do |k, v|
       #   attr_sym = "#{k}=".to_sym
       #   self.send(attr_sym, v) if self.respond_to?(attr_sym)
       # end
+      # result = RubyProf.stop
+      # 
+      # printer = RubyProf::FlatPrinter.new(result)
+      # printer.print(STDOUT, 0)
     end
     
     def metaclass

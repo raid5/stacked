@@ -1,18 +1,21 @@
 module Stacked
   class Comment < Base
-    attr_accessor :body,
-                  :comment_id,
-                  :creation_date,
-                  :edit_count,
-                  :owner_display_name,
-                  :owner_user_id,
-                  :post_id,
-                  :post_type,
-                  :reply_to_user_id,
-                  :score
+    # attr_accessor :body,
+    #               :comment_id,
+    #               :creation_date,
+    #               :edit_count,
+    #               :owner_display_name,
+    #               :owner_user_id,
+    #               :post_id,
+    #               :post_type,
+    #               :reply_to_user_id,
+    #               :score
 
     class << self
       def all(*args)
+        raise Stacked::NotImplemented
+      end
+      def search(*args)
         raise Stacked::NotImplemented
       end
     end
@@ -24,14 +27,14 @@ module Stacked
     end
 
     # The owner of this comment.
-    def owner
+    def owner_summary
       @owner ||= Stacked::User.find(owner_user_id)
     end
 
-    alias_method :created_at, :creation_date
-    alias_method :id, :comment_id
-    alias_method :user, :owner
-    alias_method :edits, :edit_count
+    # alias_method :created_at, :creation_date
+    # alias_method :id, :comment_id
+    # alias_method :user, :owner
+    # alias_method :edits, :edit_count
 
   end
 end
