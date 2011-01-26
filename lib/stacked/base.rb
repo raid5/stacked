@@ -151,7 +151,7 @@ module Stacked
     
     # Convert a user timeline result into a collection of Stacked::Usertimeline objects.
     def parse_user_timeline(result)
-      parse_type(result, "usertimeline")
+      parse_type(result, "user_timeline")
     end
     
     # Converts the specified result into objects of the +type+ class.

@@ -36,10 +36,10 @@ module Stacked
   autoload :Comment
   autoload :PostTimeline
   autoload :Question
-  autoload :Repchange
+  autoload :RepChange
   autoload :Tag
   autoload :User
-  autoload :Usertimeline
+  autoload :UserTimeline
 
   class NotImplemented < StandardError
     def message
