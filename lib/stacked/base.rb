@@ -41,7 +41,6 @@ module Stacked
       
       # All records for a given request path.
       def records(p = path, options = {})
-        p "Path: #{p}, Options: #{options.inspect}"
         parse(request(p, options)[resource])
       end
 
@@ -149,10 +148,10 @@ module Stacked
     
     # Builds attr_accessor for each attribute found in the reponse.
     def define_attributes(hash={})
-      hash.each_pair { |key, value|
-        metaclass.send :attr_accessor, key
+      hash.each_pair do |key, value|
+        metaclass.send(:attr_accessor, key) unless metaclass.respond_to?("#{key}=".to_sym)
         send "#{key}=".to_sym, value
-      }
+      end
     end
 
     public
