@@ -15,7 +15,7 @@ module Stacked
     end
 
     # The owner of this comment.
-    def owner_summary
+    def owner
       @owner ||= Stacked::User.find(owner_user_id)
     end
   end

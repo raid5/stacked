@@ -51,6 +51,9 @@ Methods that are designed to take options in the API are designed that way in th
     # Returns paged comments for the question
     comments = question.comments
     
+    # You can also specify multiple ids as an array for all find requests
+    questions = Stacked::Question.find([151338, 4579074])
+    
     # Returns paged questions based on search criteria
     Stacked::Question.search(:intitle => 'github', :tagged => 'ruby')
     

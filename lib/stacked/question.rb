@@ -36,7 +36,7 @@ module Stacked
     end
 
     # The Stacked::User representation of the owner.
-    def owner_summary
+    def owner
       @owner ||= User.find(owner_user_id)
     end
 

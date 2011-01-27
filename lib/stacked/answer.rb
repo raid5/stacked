@@ -14,7 +14,7 @@ module Stacked
     end
     
     # A Stacked::User object representing the owner of the answer.
-    def owner_summary
+    def owner
       @owner ||= User.find(owner_user_id)
     end
    

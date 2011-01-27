@@ -19,13 +19,29 @@ module Stacked
         records(path, options)
       end
 
-      # A single record belonging to the current class.
-      def find(id, options={})
-        records(singular(id), options).first
+      # A single (or multiple depending on number of ids) record belonging to the current class.
+      def find(*args)
+        # Determine ids (single or multiple)
+        ids = []
+        if args.first.instance_of? Fixnum
+          ids << args.first
+        elsif args.first.instance_of? Array
+          ids.concat(args.first)
+        end
+
+        # Options hash supplied? Merge in options
+        options = {}
+        if args.last.instance_of? Hash
+          options.merge!(args.last)
+        end
+        
+        recs = records(path_with_ids(ids), options)
+        recs.size == 1 ? recs.first : recs
       end
       
       # All records for a given request path.
       def records(p = path, options = {})
+        p "Path: #{p}, Options: #{options.inspect}"
         parse(request(p, options)[resource])
       end
 
@@ -37,6 +53,11 @@ module Stacked
       # The path to the singular resource.
       def singular(id)
         path + '/' + id.to_s
+      end
+      
+      # The path to either a singular or multiple resources.
+      def path_with_ids(ids)
+        path + '/' + ids.join(';')
       end
       
       # Convert a user result into a collection of Stacked::User objects.
