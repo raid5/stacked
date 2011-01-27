@@ -1,6 +1,6 @@
 # Stacked - A Ruby wrapper for the Stack Exchange API (v1.0)
 
-# * This code is being actively developed and will be merged with master when ready. *
+# Note: This code is being actively developed and will be merged with master when ready.
 
 While a lot of the core code has remained unchanged, this fork has went through many updates to get it working with the latest version (1.0) of the Stack Exchange API. Many thanks to radar for this initial work on this project.
 
