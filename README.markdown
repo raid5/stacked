@@ -1,37 +1,67 @@
-# Stacked - A Ruby wrapper for the Stack Overflow API (v0.5)
+# Stacked - A Ruby wrapper for the Stack Exchange API (v1.0)
 
-This library is built around v1.0 of the Stack Overflow API.
+# * This code is being actively developed and will be merged with master when ready. *
+
+While a lot of the core code has remained unchanged, this fork has went through many updates to get it working with the latest version (1.0) of the Stack Exchange API. Many thanks to radar for this initial work on this project.
 
 ## Installation
 
-To install stacked:
+    # Currently installs outdated version of the gem
+    # sudo gem install stacked
 
-    sudo gem install stacked
+## Usage
 
-To use it:
+Stacked is configurable to work with any of the Stack Exchange sites. When setting up the client, just specify the site you wish to access, the API version number, and your api key. By default, Stacked will access Stack Overflow API version 1.0. Note: You must still supply your own api key in the config.
+
+    # Access Stack Overflow API v1.0
+    Stacked::Client.configure do |config|
+      config.api_key = 'yourapikey'
+    end
+    
+    # Access Server Fault API v1.0
+    Stacked::Client.configure do |config|
+      config.site    = 'serverfault.com',
+      config.version = '1.0',
+      config.api_key = 'yourapikey'
+    end
+
+Methods that are designed to take options in the API are designed that way in the wrapper also, as you'd expect. For more details, read the Stack Overflow API [documentation](http://api.stackoverflow.com/1.0/help).
 
     require 'stacked'
+    
+    # - - Questions / Answers / Comments
+    
+    # Setup the client
+    Stacked::Client.configure do |config|
+      config.api_key = 'yourapikey' # required
+    end
+    
+    # Returns 30 (default page size) questions based on activity (default sort option)
     Stacked::Question.all
     
-To report breakages: http://github.com/radar/stacked/issues.
+    # Returns questions tagged with 'ruby', including the question body and comments
+    Stacked::Question.all(:tagged => 'ruby', :body => true, :comments => true)
+    
+    # Returns a individual question by id
+    question = Stacked::Question.find(151338)
+    
+    # Returns paged answers for the question
+    answers = question.answers
+    
+    # Returns paged comments for the question
+    comments = question.comments
+    
+    # Returns paged questions based on search criteria
+    Stacked::Question.search(:intitle => 'github', :tagged => 'ruby')
+    
+    # - - Users
 
-## Some notes
-
-Methods that are designed to take options in the API are designed that way in the wrapper also, as you'd expect. Take for example +Stacked::Question.all+ which you can pass any options you wish:
-
-     Stacked::Question.all(:pagesize => 10)
-
-In this example the amount of questions returned is limited to 10. 
-
-Other options include:
-
-* page - Specify the page when paginating through a collection.
-* body - Set this to true to return the body of the objects you're receiving. By default set to false for questions and answers.
-* comments - Set this to true to include the comments in the objects you're receiving.
-* fromdate - An integer timestamp of the time you wish to search from (default: 30 days ago, 90 days for reputation).
-* todate - An integer timestamp of the time you wish to search to (default: now)
-* tagged - A list of tags to scope this find by. Effective only on question methods.
-
-There may be some options I have missed from this list. This is why it's a first draft. So you can tell me I'm missing options, then I can add them and make it a second draft. And so on.
-
+    # Returns the specified user
+    skeet = Stacked::User.find(22656)
+    
+    # Returns all badges awarded to the user
+    skeet.badges
      
+## Documentation
+
+For additional details, checkout the latest generated [documentation](http://raid5.github.com/stacked).
