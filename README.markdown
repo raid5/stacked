@@ -1,6 +1,6 @@
 # Stacked - A Ruby wrapper for the Stack Overflow API (v0.5)
 
-This library is built around the Stack Overflow (private) API [described here][http://blog.stackoverflow.com/2010/03/stack-overflow-api-private-beta-starts/]. I am under the impression that it covers all the API methods described in [this comprehensive listing][http://dev.meta.stackoverflow.com/questions/34594/overall-api-method-list], but equally aware that this is a first draft and I am likely to make a mistake or four.
+This library is built around v1.0 of the Stack Overflow API.
 
 ## Installation
 

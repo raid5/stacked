@@ -1,4 +1,5 @@
 module Stacked
+  # Stacked::Tag class.
   class Tag < Base
 
     class << self

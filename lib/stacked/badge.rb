@@ -1,4 +1,5 @@
 module Stacked
+  # Stacked::Badge class.
   class Badge < Base
 
     class << self

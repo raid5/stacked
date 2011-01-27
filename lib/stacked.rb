@@ -11,6 +11,7 @@ begin
 rescue LoadError
 end
 
+# The Stacked module.
 module Stacked
   # TODO: Use this coupled with autoload_under when AS 3.0 becomes "stable":
   # extend ActiveSupport::Autoload
@@ -25,6 +26,7 @@ module Stacked
   #
   # autoload :Base, 'stacked/base'
   class << self
+    # Autoload classes
     def autoload(klass)
       super(klass, "stacked/#{klass.to_s.underscore}")
     end
@@ -42,7 +44,9 @@ module Stacked
   autoload :User
   autoload :UserTimeline
 
+  # NotImplemented::StandardError class.
   class NotImplemented < StandardError
+    # Default message for trying to call all/find on unsupported resources.
     def message
       "The requested action is not available in the API."
     end

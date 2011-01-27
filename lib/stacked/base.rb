@@ -1,6 +1,7 @@
 require 'httparty'
 
 module Stacked
+  # Stacked::Base class.
   class Base
     include HTTParty
 
@@ -118,6 +119,7 @@ module Stacked
       parse(result[type.pluralize], "Stacked::#{type.classify}".constantize)
     end
     
+    # Return a metaclass.
     def metaclass
       class << self
         self

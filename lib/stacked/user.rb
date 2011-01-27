@@ -1,4 +1,5 @@
 module Stacked
+  # Stacked::User class.
   class User < Base
 
     class << self

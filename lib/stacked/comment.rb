@@ -1,4 +1,5 @@
 module Stacked
+  # Stacked::Comment class.
   class Comment < Base
 
     class << self

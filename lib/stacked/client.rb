@@ -1,7 +1,9 @@
 module Stacked
+  # Stacked::Client class.
   class Client
     
     class << self
+      # Default options used to build the request URL. Must override +api_key+
       DEFAULT_OPTIONS = {
         :site => 'stackoverflow.com',
         :version => '1.0',

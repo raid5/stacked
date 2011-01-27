@@ -1,4 +1,5 @@
 module Stacked
+  # Stacked::Question class.
   class Question < Base
     
     class << self
