@@ -94,6 +94,9 @@
 <span class='comment'># Returns paged comments for the question
 </span><span class='id comments'>comments</span> <span class='op'>=</span> <span class='id question'>question</span><span class='period'>.</span><span class='id comments'>comments</span>
 
+<span class='comment'># You can also specify multiple ids as an array for all find requests
+</span><span class='id questions'>questions</span> <span class='op'>=</span> <span class='const'>Stacked</span><span class='op'>::</span><span class='const'>Question</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='int'>151338</span><span class='comma'>,</span> <span class='int'>4579074</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
 <span class='comment'># Returns paged questions based on search criteria
 </span><span class='const'>Stacked</span><span class='op'>::</span><span class='const'>Question</span><span class='period'>.</span><span class='id search'>search</span><span class='lparen'>(</span><span class='symbol'>:intitle</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>github</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:tagged</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ruby</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 
@@ -110,7 +113,7 @@
 <p>For additional details, checkout the latest generated <a href='http://raid5.github.com/stacked'>documentation</a>.</p></div></div>
     
     <div id="footer">
-  Generated on Thu Jan 27 09:57:24 2011 by 
+  Generated on Thu Jan 27 11:06:46 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.9.2).
 </div>
