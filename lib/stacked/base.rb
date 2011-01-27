@@ -1,6 +1,4 @@
 require 'httparty'
-#require 'pathname'
-#require 'ruby-prof'
 
 module Stacked
   class Base
@@ -15,12 +13,7 @@ module Stacked
         request(base + "stats")["statistics"].first
       end
       
-      def search(options = {})
-        #parse_questions(request(base + "search", options)["questions"])
-        parse(request(base + "search", options)[resource])
-      end
-      
-      # All the first group (depends on pagesize) of records for current class.
+      # All the of records for current class (depends on pagesize).
       def all(options = {})
         records(path, options)
       end
@@ -40,32 +33,6 @@ module Stacked
         get(p, :query => { :key => key }.merge!(options))
       end
 
-      # Deprecated in v1.0 (maybe sooner) -ajm
-      # Define collection methods, such as newest.
-      # def collection(*names)
-      #   # Forgive me Matz for I have sinned.
-      #   for name in names
-      #     eval <<-EVAL
-      #       def self.#{name}(options = {})
-      #         records(path + "/#{name}", options)
-      #       end
-      #     EVAL
-      #   end
-      # end
-
-      # TODO: not working! -ajm
-      # Defines association methods for things such as comments on questions.
-      # def association(assoc)
-      #   instance_eval do
-      #     assoc = assoc.to_s
-      #     define_method("#{assoc}=") do |records|
-      #       instance_variable_set("@#{assoc}", records.map { |record| "Stacked::#{assoc.classify}".constantize.new(record) })
-      #     end
-      # 
-      #     define_method(assoc) { instance_variable_get("@#{assoc}") }
-      #   end
-      # end
-
       # The path to the singular resource.
       def singular(id)
         path + '/' + id.to_s
@@ -78,13 +45,12 @@ module Stacked
 
       private
 
-      # The root URL of the API,
+      # The root URL of the API.
       def base
-        #"http://api.stackoverflow.com/1.0/"
         Stacked::Client.base_url
       end
 
-      # The key to let us in.
+      # The api key to let us in.
       def key
         Stacked::Client.api_key
       end
@@ -96,9 +62,7 @@ module Stacked
 
       # The path to this particular part of the API.
       # Example if the class is Stacked::Question:
-      #
-      # http://api.stackoverflow.com/1.0/questions
-      
+      #   http://api.stackoverflow.com/1.0/questions
       def path
         base + resource
       end
@@ -144,11 +108,6 @@ module Stacked
       parse_type(result, "tag")
     end
     
-    # Convert a user result into a collection of Stacked::User objects.
-    # def parse_users(result)
-    #   parse_type(result, "user")
-    # end
-    
     # Convert a user timeline result into a collection of Stacked::Usertimeline objects.
     def parse_user_timeline(result)
       parse_type(result, "user_timeline")
@@ -158,28 +117,6 @@ module Stacked
     def parse_type(result, type)
       parse(result[type.pluralize], "Stacked::#{type.classify}".constantize)
     end
-
-    public
-
-    # Finds a post based on the +post_type+ and +post_id+
-    def post
-      "Stacked::#{post_type.classify}".constantize.find(post_id)
-    end
-
-    # Creates a new object of the given class based on the attributes passed in.
-    def initialize(attributes={})
-      self.define_attributes(attributes)
-      
-      # RubyProf.start
-      # attributes.each do |k, v|
-      #   attr_sym = "#{k}=".to_sym
-      #   self.send(attr_sym, v) if self.respond_to?(attr_sym)
-      # end
-      # result = RubyProf.stop
-      # 
-      # printer = RubyProf::FlatPrinter.new(result)
-      # printer.print(STDOUT, 0)
-    end
     
     def metaclass
       class << self
@@ -187,11 +124,24 @@ module Stacked
       end
     end
     
+    # Builds attr_accessor for each attribute found in the reponse.
     def define_attributes(hash={})
       hash.each_pair { |key, value|
         metaclass.send :attr_accessor, key
         send "#{key}=".to_sym, value
       }
+    end
+
+    public
+
+    # Creates a new object of the given class based on the attributes passed in.
+    def initialize(attributes={})
+      self.define_attributes(attributes)
+      
+      # attributes.each do |k, v|
+      #   attr_sym = "#{k}=".to_sym
+      #   self.send(attr_sym, v) if self.respond_to?(attr_sym)
+      # end
     end
   end
 end

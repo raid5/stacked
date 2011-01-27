@@ -1,42 +1,11 @@
 module Stacked
   class User < Base
-    # attr_accessor :about_me,
-    #               :accept_rate,
-    #               :age,
-    #               :answer_count,
-    #               :creation_date,
-    #               :display_name,
-    #               :down_vote_count,
-    #               :email_hash,
-    #               :last_access_date,
-    #               :location,
-    #               :question_count,
-    #               :reputation,
-    #               :up_vote_count,
-    #               :user_id,
-    #               :user_type,
-    #               :view_count,
-    #               :website_url
-
-    # collection :newest, :oldest, :name
 
     class << self
-      def search(*args)
-        raise Stacked::NotImplemented
-      end
-      
       # All moderators.
       def moderators(options={})
         records(path + "/moderators", options)
       end
-      
-      # alias_method :reputation, :all
-
-      # Returns users matching the given filter.
-      # def filter(filter, options={})
-      #   options.reverse_merge!(:filter => filter)
-      #   records(path, options)
-      # end
     end
 
     # Answers by this user.
@@ -63,9 +32,6 @@ module Stacked
     def favorites(options={})
       parse_questions(request(singular(user_id) + "/favorites", options))
     end
-    
-    # Silly Americans.
-    # alias_method :favourites, :favorites
     
     # Comments that are directed at user(s).
     def mentioned(options={})

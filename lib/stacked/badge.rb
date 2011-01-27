@@ -1,27 +1,10 @@
 module Stacked
   class Badge < Base
-    # attr_accessor :award_count,
-    #               :badge_id,
-    #               :description,
-    #               :name,
-    #               :rank,
-    #               :tag_based
-
-    # collection :tags
-
-    #alias_method :id, :badge_id
 
     class << self
-      #alias_method :name, :all
-      
-      def search(*args)
-        raise Stacked::NotImplemented
-      end
-      
+      # All users who have been awarded the specific badge.
       def find(id, options = {})
-        path = singular(id)
-        p "Badge.find path => #{path}"
-        parse_users(request(path, options))
+        parse_users(request(singular(id), options))
       end
 
       # All standard, non-tag-based badges.
