@@ -1,6 +1,36 @@
 module Stacked
   # Stacked::User class.
   class User < Base
+    attr_accessor :about_me,
+                  :accept_rate,
+                  :association_id,
+                  :age,
+                  :answer_count,
+                  :badge_counts,
+                  :creation_date,
+                  :email_hash,
+                  :display_name,
+                  :down_vote_count,
+                  :email_hash,
+                  :last_access_date,
+                  :location,
+                  :question_count,
+                  :reputation,
+                  :timed_penalty_date,
+                  :up_vote_count,
+                  :user_id,
+                  :user_answers_url,
+                  :user_badges_url,
+                  :user_comments_url,
+                  :user_favorites_url,
+                  :user_mentioned_url,
+                  :user_questions_url,
+                  :user_reputation_url,
+                  :user_tags_url,
+                  :user_timeline_url,
+                  :user_type,
+                  :view_count,
+                  :website_url
 
     class << self
       # All moderators.
@@ -45,7 +75,7 @@ module Stacked
     end
 
     # Reputation changes for user(s).
-    def reputation_changes(options={})
+    def rep_changes(options={})
       parse_rep_changes(request(singular(user_id) + "/reputation", options))
     end
     

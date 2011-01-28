@@ -1,6 +1,34 @@
 module Stacked
   # Stacked::Question class.
   class Question < Base
+    attr_accessor :accepted_answer_id,
+                  :answer_count,
+                  :answers,
+                  :body,
+                  :bounty_amount,
+                  :bounty_closes_date,
+                  :comments,
+                  :community_owned,
+                  :closed_date,
+                  :closed_reason,
+                  :creation_date,
+                  :down_vote_count,
+                  :favorite_count,
+                  :last_activity_date,
+                  :last_edit_date,
+                  :locked_date,
+                  :migrated,
+                  :owner,
+                  :protected_date,
+                  :question_id,
+                  :question_answers_url,
+                  :question_comments_url,
+                  :question_timeline_url,
+                  :score,
+                  :tags,
+                  :title,
+                  :up_vote_count,
+                  :view_count
     
     class << self
       # All questions matching the search.
@@ -34,10 +62,10 @@ module Stacked
     def accepted_answer
       Answer.find(accepted_answer_id) if accepted_answer_id
     end
-
-    # The Stacked::User representation of the owner.
-    def owner
-      @owner ||= User.find(owner_user_id)
+    
+    # Helper method for creating Stacked::User object when initializing new Stacked::Question objects.
+    def owner=(attributes)
+      @owner = User.new(attributes)
     end
 
     # Helper method for creating Stacked::Tag objects when initializing new Stacked::Question objects.

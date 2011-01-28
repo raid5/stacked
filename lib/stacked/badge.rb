@@ -1,6 +1,13 @@
 module Stacked
   # Stacked::Badge class.
   class Badge < Base
+    attr_accessor :award_count,
+                  :badge_id,
+                  :badges_recipients_url,
+                  :description,
+                  :name,
+                  :rank,
+                  :tag_based
 
     class << self
       # All users who have been awarded the specific badge.

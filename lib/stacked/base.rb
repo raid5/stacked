@@ -158,12 +158,17 @@ module Stacked
 
     # Creates a new object of the given class based on the attributes passed in.
     def initialize(attributes={})
-      self.define_attributes(attributes)
+      #self.define_attributes(attributes)
       
-      # attributes.each do |k, v|
-      #   attr_sym = "#{k}=".to_sym
-      #   self.send(attr_sym, v) if self.respond_to?(attr_sym)
-      # end
+      attributes.each do |k, v|
+        attr_sym = "#{k}=".to_sym
+        self.send(attr_sym, v) if self.respond_to?(attr_sym)
+      end
+    end
+    
+    # Finds a post based on the +post_type+ and +post_id+
+    def post
+      "Stacked::#{post_type.classify}".constantize.find(post_id)
     end
   end
 end

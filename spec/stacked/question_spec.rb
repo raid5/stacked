@@ -10,7 +10,29 @@ describe Stacked::Question do
       pending("Crack::ParseError: Invalid JSON string")
       subject.all.all? { |q| q.is_a?(subject) }.should be_true
     end
+    
+    it "gets a list of questions with comments" do
+      pending("look into more")
+      subject.all(:pagesize => 1).first.comments.should be_nil
+      subject.all(:comments => true, :pagesize => 1).first.comments.should_not be_nil
+    end
+    
+    it "search" do
+      question = subject.search(:intitle => 'ImageMagick', :pagesize => 1).first
+      question.title.should =~ /ImageMagick/i
+    end
 
+    it "unanswered" do
+      question = subject.unanswered(:pagesize => 1).first
+      question.should be_is_a(Stacked::Question)
+      question.answers.should be_blank
+    end
+
+    it "tagged" do
+      question = subject.all(:tagged => ["ruby", "ruby-on-rails"].join(';'), :pagesize => 1).first
+      question.tags.map(&:name).should include("ruby")
+      question.tags.map(&:name).should include("ruby-on-rails")
+    end
   end
 
   context "instance methods" do
@@ -43,7 +65,7 @@ describe Stacked::Question do
     end
 
     it "finds the user for a question" do
-      @question.user.should be_is_a(Stacked::User)
+      @question.owner.should be_is_a(Stacked::User)
     end
 
     it "finds the accepted answer" do
